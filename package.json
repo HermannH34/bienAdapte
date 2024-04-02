@@ -17,6 +17,8 @@
     "crisp-sdk-web": "^1.0.21",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
+    "flowbite": "^2.3.0",
+    "flowbite-react": "^0.7.6",
     "form-data": "^4.0.0",
     "mailgun.js": "^9.2.1",
     "next": "^14.0.0",

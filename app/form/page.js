@@ -6,13 +6,9 @@ import RealEstateForm from "../../components/RealEstateForm";
 export default function realEstateForm() {
     return (
         <>
-            <Suspense>
-                <HeaderForRealEstateHunter />
-            </Suspense>
             <main>
                 <RealEstateForm />
             </main>
-            <Footer />
         </>
     );
 }

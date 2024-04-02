@@ -64,9 +64,9 @@ const ButtonSignin = ({ text = "S'inscire", extraStyle }) => {
       <>
         <Link
           className={`btn btn-secondary mr-4`}
-          href={"/form"}>
+          href={config.auth.loginUrl}>
           {"Je recherche un bien"}
-        </Link>
+        </Link >
         <Link
           className={`btn ${extraStyle ? extraStyle : ""}`}
           href={config.auth.loginUrl}

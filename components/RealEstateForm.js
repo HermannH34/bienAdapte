@@ -2,70 +2,108 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-const RealEstateForm = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const RealEstateForm = ({ resetForm }) => {
+    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
+    const [nextQuestion, setNextQuestion] = useState('');
 
-    const onSubmit = (data) => {
-        if (data.type[0] === 'maison') {
-            setFormContent('maison');
+
+    const questions = {
+        initialQuestion: {
+            question: 'Quel type de bien souhaitez-vous acheter ?',
+            choices: ["Plutôt maison", "Ou appartement"],
+        },
+        surface: {
+            question: "Quelle surface pour votre maison ?",
+            choices: ["Entre 50m² et 100m²", "Plus de 100m²"],
+        },
+        houseLocalisation: {
+            question: "On parle d’une maison:",
+            choices: ["de ville", "en quartier pavillonnaire"],
+        },
+        houseGarden: {
+            question: "Le jardin ?",
+            choices: ["Oui", "Non", "Pas négociable"],
+        },
+        swimmingPoolGarden: {
+            question: "Et on va plus loin...",
+            choices: ["Une piscine ??"],
+        },
+        bedRooms: {
+            question: "Combien de chambres est ce qu’il vous faut? 1, 2, 3...??",
+            numberInput: true
+        },
+        bathRooms: {
         }
+
     };
 
+    useEffect(() => {
+
+        if (resetForm) {
+            setFormContent('initial');
+            setNextQuestion(questions.initialQuestion);
+        } else if (formContent === 'initial') {
+            setNextQuestion(questions.initialQuestion);
+        } else if (formContent[0] === 'Plutôt maison') {
+            setNextQuestion(questions.surface);
+        } else if (formContent.includes("Entre 50m² et 100m²") || formContent.includes("Plus de 100m²")) {
+            setNextQuestion(questions.houseLocalisation);
+        } else if (formContent.includes("de ville") || formContent.includes("en quartier pavillonnaire")) {
+            setNextQuestion(questions.houseGarden);
+        } else if (formContent.includes("Oui") || formContent.includes("Non") || formContent.includes("Pas négociable")) {
+            setNextQuestion(questions.swimmingPoolGarden);
+        } else if (formContent.includes("Une piscine ??")) {
+            setNextQuestion(questions.bedRooms);
+        }
+
+
+    }, [formContent, resetForm]);
+
+
+    const onFormSubmit = data => {
+        console.log(data.propertyType);
+        setFormContent([...data.propertyType]);
+        reset();
+    };
+
+    if (nextQuestion.numberInput) {
+        return (
+            <div style={{ marginLeft: '18em', marginTop: '8em' }}>
+                <h1 className='text-2xl font-semibold font-sans'>{nextQuestion.question}</h1>
+                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+
+                    {/* { */}
+
+                    {/* // <form class="max-w-sm mx-auto"> */}
+                    <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choisir un nombre:</label>
+                    <input {...register("propertyType")} type="number" id="number-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="3" required />
+                    {/* </form> */}
+
+                    {/* } */}
+                </form>
+                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+
+            </div>
+        )
+    }
+
     return (
-        <div className="" style={{ marginLeft: "275px" }}>
-            {formContent === 'initial' && (
-                <FormSection
-                    title="Quel type de bien recherchez-vous?"
-                    checkBoxes={[
-                        { label: "Plutôt maison", value: "maison", style: { width: "188px" } },
-                        { label: "Ou appartement", value: "appartement", style: { width: "210px" } }
-                    ]}
-                    onSubmit={onSubmit}
-                />
-            )}
+        <div style={{ marginLeft: '18em', marginTop: '8em' }}>
+            <h1 className='text-2xl font-semibold font-sans'>{nextQuestion.question}</h1>
+            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
 
-            {formContent === 'maison' && (
-                <FormSection
-                    title="Une maison:"
-                    checkBoxes={[
-                        { label: "Moderne", value: "Moderne", style: { width: "188px" } },
-                        { label: "Typique", value: "Typique", style: { width: "210px" } }
-                    ]}
-                    onSubmit={onSubmit}
-                />
-            )}
-        </div>
-    );
-};
 
-const FormSection = ({ title, checkBoxes, onSubmit }) => {
-    const { handleSubmit, register } = useForm();
-
-    return (
-        <>
-            <h1 className="mb-10 prose text-2xl font-extrabold" style={{ marginTop: "55px" }}>{title}</h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="mt-12 mb-20">
-                <div className="space-y-3">
-                    {checkBoxes.map(({ label, value, style }) => (
-                        <CheckBox key={value} label={label} value={value} register={register("type")} style={style} />
-                    ))}
-                </div>
-                <div className="mt-5">
-                    <button type="submit" className="btn btn-primary">Soumettre</button>
-                </div>
+                {
+                    nextQuestion.choices && nextQuestion.choices.map((choice, index) => (
+                        <div key={index} className="flex items-center mb-2 mt-4">
+                            <input {...register("propertyType")} id={choice} type="checkbox" value={choice} className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor={choice} className="ms-2 text-base text-lg text-gray-900 dark:text-gray-300">{choice}</label>
+                        </div>
+                    ))
+                }
+                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
             </form>
-        </>
-    );
-};
-
-const CheckBox = ({ label, value, register, style }) => {
-    return (
-        <div className="form-control" style={style}>
-            <label className="label cursor-pointer flex items-center">
-                <input {...register} type="checkbox" value={value} className="checkbox checkbox-primary mr-2" />
-                <span className="label-text font-medium text-lg">{label}</span>
-            </label>
         </div>
     );
 };
