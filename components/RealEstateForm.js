@@ -8,17 +8,13 @@ const RealEstateForm = ({ resetForm }) => {
 
     const onFormSubmit = data => {
         if (Array.isArray(data.propertyType)) {
-            // Si propertyType est un tableau, prenez le premier élément
             setFormContent(data.propertyType[0]);
-            console.log(formContent);
         } else {
-            // obtenir le nom de la clé premiere de l'objet
             setFormContent(Object.keys(data)[0]);
         }
-        // Logique pour vérifier ce que vous obtenez
-        reset(); // Réinitialiser le formulaire après la soumission
+        console.log(formContent);
+        reset();
     };
-
 
     return (
         <div style={{ marginLeft: '18em', marginTop: '8em' }}>
@@ -126,6 +122,59 @@ const RealEstateForm = ({ resetForm }) => {
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
+                </>
+            )}
+            {(formContent.slice(0, 6) === 'jardin') && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Et on va plus loin... une piscine ??</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("propertyType")} id="piscine-oui-checkbox" type="checkbox" value="piscine-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="piscine-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
+                        </div>
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("propertyType")} id="piscine-non-checkbox" type="checkbox" value="piscine-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="piscine-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
+                        </div>
+                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                    </form>
+                </>
+            )}
+            {(formContent.slice(0, 7) === 'piscine') && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Combien de chambres est ce qu’il vous faut?</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                        <div>
+
+                            <input
+                                {...register("bedrooms")}
+                                type="number"
+                                id="number-input"
+                                aria-describedby="helper-text-explanation"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="3 chambres"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        >
+                            Soumettre
+                        </button>
+                    </form>
+                </>
+            )}
+            {(formContent === 'bedrooms') && (
+                <>
+                    {/* <h1 className='text-2xl font-semibold font-sans'>Combien de chambres est ce qu’il vous faut?</h1> */}
+                    <button
+                        type="submit"
+                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    >
+                        Soumettre
+                    </button>
+
                 </>
             )}
         </div>
