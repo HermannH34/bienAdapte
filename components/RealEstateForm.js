@@ -167,15 +167,67 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'bedrooms') && (
                 <>
-                    {/* <h1 className='text-2xl font-semibold font-sans'>Combien de chambres est ce qu’il vous faut?</h1> */}
-                    <button
-                        type="submit"
-                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                    >
-                        Soumettre
-                    </button>
+                    <h1 className='text-2xl font-semibold font-sans'>Combien de salle de bains? (les embouteillages y en a marre)</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                        <div>
 
+                            <input
+                                {...register("bathrooms")}
+                                type="number"
+                                id="number-input"
+                                aria-describedby="helper-text-explanation"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="2 salles de bains"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        >
+                            Soumettre
+                        </button>
+                    </form>
                 </>
+            )}
+            {(formContent === 'bathrooms') && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Votre budget: </h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                        <div>
+                            <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
+                            <input
+                                {...register("budgetMin")}
+                                type="number"
+                                id="number-input"
+                                aria-describedby="helper-text-explanation"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="60 000 €"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
+                            <input
+                                {...register("bugdetMax")}
+                                type="number"
+                                id="number-input"
+                                aria-describedby="helper-text-explanation"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="1 000 000 €"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        >
+                            Soumettre
+                        </button>
+                    </form>
+                </>
+
+
             )}
         </div>
 
