@@ -5,11 +5,23 @@ import { useForm } from 'react-hook-form';
 const RealEstateForm = ({ resetForm }) => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
+    const [typeOfproperty, setTypeOfProperty] = useState('');
+
+    let typeOfPropertyString = '';
+    if (formContent === "selectedNumber") {
+        if (typeOfproperty === 'appartement') {
+            typeOfPropertyString = 'un appartement';
+        } else {
+            typeOfPropertyString = 'une maison';
+        }
+    }
+
 
     const onFormSubmit = data => {
         console.log(data);
         if (Array.isArray(data.propertyType)) {
             setFormContent(data.propertyType[0]);
+            setTypeOfProperty(data.propertyType[0]);
         } else {
             setFormContent(Object.keys(data)[0]);
         }
@@ -28,13 +40,13 @@ const RealEstateForm = ({ resetForm }) => {
                         </div>
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">plutôt appartement</label>
+                            <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Un joli appartement</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
                 </>
             )}
-            {formContent === 'maison' && (
+            {(formContent === 'appartement' || formContent === 'maison') && (
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Surface minimum et maximum: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
@@ -72,23 +84,62 @@ const RealEstateForm = ({ resetForm }) => {
                 </>
 
             )}
-            {formContent === "selectedNumber" && (
+            {/* {(typeOfproperty === 'appartement' && formContent === "selectedNumber") && (
                 <>
-                    <h1 className='text-2xl font-semibold font-sans'>On parle d’une maison: </h1>
+                    <h1 className='text-2xl font-semibold font-sans'>Un joli appartement  </h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                        <div>
+                            <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
+                            <input
+                                {...register("selectedNumber")}
+                                type="number"
+                                id="number-input"
+                                aria-describedby="helper-text-explanation"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="37 m2"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
+                            <input
+                                {...register("selectedNumber")}
+                                type="number"
+                                id="number-input"
+                                aria-describedby="helper-text-explanation"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="300 m2"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        >
+                            Soumettre
+                        </button>
+                    </form>
+                </>
+
+            )} */}
+            {formContent === "selectedNumber" && (
+
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>On parle d’{typeOfPropertyString}: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
-                            <input {...register("propertyType")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
                         </div>
                         <div className="flex items-center mb-2 mt-4">
-                            <input {...register("propertyType")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">typique</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
                 </>
             )}
-            {(formContent === 'typique' || formContent === 'moderne') && (
+            {(formContent === "propertyAge") && (
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Une maison: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
@@ -313,7 +364,103 @@ const RealEstateForm = ({ resetForm }) => {
                 </>
             )
             }
+            {formContent === 'travauxDansBudget' && (
+                <>
+                    <>
+                        <h1 className='text-2xl font-semibold font-sans'>C’est bon, on a défini votre bien idéal. Mais il se situe où? </h1>
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                            <div className="flex items-center w-12  mb-2 mt-4" style={{ width: '25em' }}>
+                                <label htmlFor="underline_select" className="sr-only">Votre quartier de rêve</label>
+                                <select
+                                    {...register("quartier")}
+                                    id="underline_select"
+                                    className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+                                >
+                                    <option>Votre quartier de rêve</option>
+                                    <option value="centre">Montpellier-Centre</option>
+                                    <option value="croix-dargent">Croix-d'Argent</option>
+                                    <option value="cevennes">Les Cévennes</option>
+                                    <option value="mosson">Mosson</option>
+                                    <option value="hopitaux">Hôpitaux-Facultés</option>
+                                    <option value="port-marianne">Port-Marianne</option>
+                                    <option value="arenes">Prés d'Arènes</option>
+                                </select>
+                            </div>
+                            <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                Soumettre
+                            </button>
+                        </form>
+                    </>
 
+                </>
+            )
+            }
+            {formContent === 'quartier' && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Les services qui doivent être à coté:</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("servicesDeProximite")} id="ecole" type="checkbox" value="ecole" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="ecole-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">l’école ?</label>
+                        </div>
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("servicesDeProximite")} id="tramway" type="checkbox" value="tramway" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="tramway-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">le tram ?</label>
+                        </div>
+                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                    </form>
+                </>
+            )
+            }
+            {formContent === 'servicesDeProximite' && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Les petits plus à coté:</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("loisirsAproximite")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="parcs-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">parcs ?</label>
+                        </div>
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("loisirsAproximite")} id="boutiques" type="checkbox" value="boutiques" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="boutiques-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">boutiques ?</label>
+                        </div>
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("loisirsAproximite")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="restaurants/bars-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">restaurants/bars ?</label>
+                        </div>
+                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                    </form>
+                </>
+            )
+            }
+            {/* {formContent === 'loisirsAproximite' && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Plus généralement, quelle ambiance vous parle le plus?</h1>
+
+                </>
+            )} */}
+            {formContent === 'loisirsAproximite' && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>Votre priorité: </h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                        <textarea
+                            {...register("nonNegociable")}
+                            id="message"
+                            rows="4"
+                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Ce qui n’est pas négociable...">
+
+                        </textarea>
+                        <button
+                            type="submit"
+                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        >
+                            Soumettre
+                        </button>
+                    </form>
+
+                </>
+            )}
         </div >
 
 
