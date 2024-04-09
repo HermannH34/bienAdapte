@@ -6,22 +6,24 @@ const RealEstateForm = ({ resetForm }) => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
     const [typeOfproperty, setTypeOfProperty] = useState('');
+    console.log("typeOfproperty: ", typeOfproperty)
+    console.log("formContent: ", formContent)
 
     let typeOfPropertyString = '';
-    if (formContent === "selectedNumber") {
-        if (typeOfproperty === 'appartement') {
-            typeOfPropertyString = 'un appartement';
-        } else {
-            typeOfPropertyString = 'une maison';
-        }
+    if (typeOfproperty === 'appartement') {
+        typeOfPropertyString = 'un appartement';
+    } else {
+        typeOfPropertyString = 'une maison';
     }
 
 
     const onFormSubmit = data => {
-        console.log(data);
+        console.log("data: ", data)
+        if (formContent === "appartement" || formContent === "maison") {
+            setTypeOfProperty(formContent);
+        }
         if (Array.isArray(data.propertyType)) {
             setFormContent(data.propertyType[0]);
-            setTypeOfProperty(data.propertyType[0]);
         } else {
             setFormContent(Object.keys(data)[0]);
         }
@@ -50,10 +52,10 @@ const RealEstateForm = ({ resetForm }) => {
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Surface minimum et maximum: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                        <div>
+                        <div className='mb-2'>
                             <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
                             <input
-                                {...register("selectedNumber")}
+                                {...register("surface")}
                                 type="number"
                                 id="number-input"
                                 aria-describedby="helper-text-explanation"
@@ -65,7 +67,7 @@ const RealEstateForm = ({ resetForm }) => {
                         <div>
                             <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
                             <input
-                                {...register("selectedNumber")}
+                                {...register("surface")}
                                 type="number"
                                 id="number-input"
                                 aria-describedby="helper-text-explanation"
@@ -84,45 +86,7 @@ const RealEstateForm = ({ resetForm }) => {
                 </>
 
             )}
-            {/* {(typeOfproperty === 'appartement' && formContent === "selectedNumber") && (
-                <>
-                    <h1 className='text-2xl font-semibold font-sans'>Un joli appartement  </h1>
-                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                        <div>
-                            <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
-                            <input
-                                {...register("selectedNumber")}
-                                type="number"
-                                id="number-input"
-                                aria-describedby="helper-text-explanation"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="37 m2"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
-                            <input
-                                {...register("selectedNumber")}
-                                type="number"
-                                id="number-input"
-                                aria-describedby="helper-text-explanation"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="300 m2"
-                                required
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                        >
-                            Soumettre
-                        </button>
-                    </form>
-                </>
-
-            )} */}
-            {formContent === "selectedNumber" && (
+            {(formContent === "surface") && (
 
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>On parle d’{typeOfPropertyString}: </h1>
@@ -139,7 +103,31 @@ const RealEstateForm = ({ resetForm }) => {
                     </form>
                 </>
             )}
-            {(formContent === "propertyAge") && (
+            {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'> On se déplace?</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">local velo obligatoire</label>
+                        </div>
+                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                    </form>
+                </>
+            )}
+            {(typeOfproperty === 'appartement' && formContent === "velo") && (
+                <>
+                    <h1 className='text-2xl font-semibold font-sans'>La voiture:</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="parking" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Je veux un parking</label>
+                        </div>
+                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                    </form>
+                </>
+            )}
+            {(typeOfproperty === 'maison' && formContent === "propertyAge") && (
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Une maison: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
@@ -155,7 +143,7 @@ const RealEstateForm = ({ resetForm }) => {
                     </form>
                 </>
             )}
-            {(formContent === 'ville' || formContent === 'pavillonnaire') && (
+            {(typeOfproperty === 'maison' && (formContent === 'ville' || formContent === 'pavillonnaire')) && (
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Le jardin: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
@@ -175,7 +163,7 @@ const RealEstateForm = ({ resetForm }) => {
                     </form>
                 </>
             )}
-            {(formContent.slice(0, 6) === 'jardin') && (
+            {(typeOfproperty === 'maison' && formContent.slice(0, 6) === 'jardin') && (
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Et on va plus loin... une piscine ??</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
@@ -191,7 +179,7 @@ const RealEstateForm = ({ resetForm }) => {
                     </form>
                 </>
             )}
-            {(formContent.slice(0, 7) === 'piscine') && (
+            {(formContent === "parking" || formContent.slice(0, 7) === 'piscine') && (
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Combien de chambres est ce qu’il vous faut?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
@@ -245,7 +233,7 @@ const RealEstateForm = ({ resetForm }) => {
                 <>
                     <h1 className='text-2xl font-semibold font-sans'>Votre budget: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                        <div>
+                        <div className='mb-2'>
                             <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">La fourchette basse:</label>
                             <input
                                 {...register("budgetMin")}
@@ -306,8 +294,8 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'coupDeCoeur') && (
                 <>
+                    <h1 className='text-2xl font-semibold font-sans'>Il se déclenche comment le coup de foudre?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Il se déclenche comment le coup de foudre?</label>
                         <textarea
                             {...register("coupDeFoudre")}
                             id="message"
