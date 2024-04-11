@@ -1,6 +1,9 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import Image from 'next/image'
+import realEstateForm from '@/app/form/page';
+import { randomBytes } from 'crypto';
 
 const RealEstateForm = ({ resetForm }) => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
@@ -10,10 +13,13 @@ const RealEstateForm = ({ resetForm }) => {
     console.log("formContent: ", formContent)
 
     let typeOfPropertyString = '';
+    let realEstateImg = '';
     if (typeOfproperty === 'appartement') {
         typeOfPropertyString = 'un appartement';
+        // realEstateImg = '/appartement.png';
     } else {
         typeOfPropertyString = 'une maison';
+        realEstateImg = '/house.png';
     }
 
 
@@ -31,10 +37,16 @@ const RealEstateForm = ({ resetForm }) => {
     };
 
     return (
-        <div style={{ marginLeft: '18em', marginTop: '8em' }}>
+        <div style={{ marginLeft: '18em', marginTop: '5em' }}>
             {formContent === 'initial' && (
                 <>
-                    <h1 className='text-2xl font-semibold font-sans'>Quel type de bien recherchez-vous?</h1>
+                    <Image
+                        src="/realEstate.png"
+                        width={75}
+                        height={75}
+                        alt="Picture of the author"
+                    />
+                    <h1 className='text-2xl font-semibold font-sans mt-8'>Quel type de bien recherchez-vous?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -50,7 +62,13 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'appartement' || formContent === 'maison') && (
                 <>
-                    <h1 className='text-2xl font-semibold font-sans'>Surface minimum et maximum: </h1>
+                    <Image
+                        src="/ruler.png"
+                        width={80}
+                        height={80}
+                        alt="Picture of the author"
+                    />
+                    <h1 className='text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div className='mb-2'>
                             <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
@@ -89,7 +107,13 @@ const RealEstateForm = ({ resetForm }) => {
             {(formContent === "surface") && (
 
                 <>
-                    <h1 className='text-2xl font-semibold font-sans'>On parle d’{typeOfPropertyString}: </h1>
+                    <Image
+                        src={realEstateImg}
+                        width={80}
+                        height={80}
+                        alt="Picture of the author"
+                    />
+                    <h1 className='text-2xl font-semibold font-sans mt-8'>On parle d’{typeOfPropertyString}: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
