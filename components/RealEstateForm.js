@@ -9,8 +9,7 @@ const RealEstateForm = ({ resetForm }) => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
     const [typeOfproperty, setTypeOfProperty] = useState('');
-    console.log("typeOfproperty: ", typeOfproperty)
-    console.log("formContent: ", formContent)
+    const [chronology, setChronolgy] = useState('Résidence principale')
 
     let typeOfPropertyString = '';
     let realEstateImg = '';
@@ -24,22 +23,31 @@ const RealEstateForm = ({ resetForm }) => {
 
 
     const onFormSubmit = data => {
-        console.log("data: ", data)
         if (formContent === "appartement" || formContent === "maison") {
+            setChronolgy(formContent)
             setTypeOfProperty(formContent);
         }
+
         if (Array.isArray(data.propertyType)) {
             setFormContent(data.propertyType[0]);
         } else {
-            setFormContent(Object.keys(data)[0]);
+            const formValue = Object.keys(data)[0]
+            setFormContent(formValue);
+
+            if (formValue === "appartement" || formValue === "maison") {
+                setChronolgy(chronology)
+            }
+            console.log('chronology:', chronology)
         }
+
         reset();
     };
 
     return (
-        <div style={{ marginLeft: '18em', marginTop: '5em' }}>
+        <div style={{ marginLeft: '16em', marginTop: '6em', position: 'relative' }}>
             {formContent === 'initial' && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale</h3>
                     <Image
                         src="/realEstate.png"
                         width={75}
@@ -62,6 +70,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'appartement' || formContent === 'maison') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {formContent}</h3>
                     <Image
                         src="/ruler.png"
                         width={80}
@@ -107,6 +116,7 @@ const RealEstateForm = ({ resetForm }) => {
             {(formContent === "surface") && (
 
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <Image
                         src={realEstateImg}
                         width={80}
@@ -129,6 +139,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'> On se déplace?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -141,6 +152,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'appartement' && formContent === "velo") && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>La voiture:</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -153,6 +165,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && formContent === "propertyAge") && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Une maison: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -169,6 +182,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && (formContent === 'ville' || formContent === 'pavillonnaire')) && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Le jardin: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -189,6 +203,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && formContent.slice(0, 6) === 'jardin') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Et on va plus loin... une piscine ??</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -205,6 +220,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === "parking" || formContent.slice(0, 7) === 'piscine') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Combien de chambres est ce qu’il vous faut?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div>
@@ -230,6 +246,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'bedrooms') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Combien de salle de bains? (les embouteillages y en a marre)</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div>
@@ -255,6 +272,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'bathrooms') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Votre budget: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div className='mb-2'>
@@ -294,6 +312,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent.slice(0, 6) === 'budget') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>En cas de coup de coeur: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div>
@@ -318,6 +337,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'coupDeCoeur') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Il se déclenche comment le coup de foudre?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <textarea
@@ -338,6 +358,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'coupDeFoudre') && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Les travaux: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <label htmlFor="minmax-range" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Partant ou pas partant</label>
@@ -361,6 +382,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {formContent === 'travaux' && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Inclus dans le budget ou pas?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -379,6 +401,7 @@ const RealEstateForm = ({ resetForm }) => {
             {formContent === 'travauxDansBudget' && (
                 <>
                     <>
+                        <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                         <h1 className='text-2xl font-semibold font-sans'>C’est bon, on a défini votre bien idéal. Mais il se situe où? </h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className="flex items-center w-12  mb-2 mt-4" style={{ width: '25em' }}>
@@ -409,6 +432,7 @@ const RealEstateForm = ({ resetForm }) => {
             }
             {formContent === 'quartier' && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Les services qui doivent être à coté:</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -426,6 +450,7 @@ const RealEstateForm = ({ resetForm }) => {
             }
             {formContent === 'servicesDeProximite' && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Les petits plus à coté:</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -453,6 +478,7 @@ const RealEstateForm = ({ resetForm }) => {
             )} */}
             {formContent === 'loisirsAproximite' && (
                 <>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Votre priorité: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <textarea
