@@ -3,9 +3,10 @@ import themes from "daisyui/src/theming/themes.js";
 const config = {
   // REQUIRED
   appName: "BienAjuste",
+  subscribeToApp: "Rentrez dans le réseau",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app.",
+    "L'appli qui prospecte à votre place.",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "shipfa.st",
   crisp: {
@@ -26,18 +27,18 @@ const config = {
         //  REQUIRED - Name of the plan, displayed on the pricing page
         name: "Starter",
         // A friendly description of the plan, displayed on the pricing page. Tip: explain why this plan and not others
-        description: "Perfect for small projects",
+        description: "Parfait pour débuter",
         // The price you want to display, the one user will be charged on Stripe.
-        price: 79,
+        price: 10,
         // If you have an anchor price (i.e. $29) that you want to display crossed out, put it here. Otherwise, leave it empty
-        priceAnchor: 99,
+        priceAnchor: "",
         features: [
           {
-            name: "NextJS boilerplate",
+            name: "1 contact: 10 euros",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
+          // { name: "User oauth" },
+          // { name: "Database" },
+          // { name: "Emails" },
         ],
       },
       {
@@ -47,19 +48,19 @@ const config = {
           process.env.NODE_ENV === "development"
             ? "price_1O5KtcAxyNprDp7iftKnrrpw"
             : "price_456",
-        name: "Advanced",
-        description: "You need more power",
-        price: 99,
-        priceAnchor: 149,
+        name: "Avancé",
+        description: "Décuplez vos prospects",
+        price: 80,
+        priceAnchor: "",
         features: [
           {
-            name: "NextJS boilerplate",
+            name: "10 contacts: 80 euros",
           },
-          { name: "User oauth" },
-          { name: "Database" },
-          { name: "Emails" },
-          { name: "1 year of updates" },
-          { name: "24/7 support" },
+          // { name: "User oauth" },
+          // { name: "Database" },
+          // { name: "Emails" },
+          // { name: "1 year of updates" },
+          // { name: "24/7 support" },
         ],
       },
     ],
@@ -91,7 +92,7 @@ const config = {
   },
   auth: {
     // REQUIRED — the path to log in users. It's use to protect private routes (like /dashboard). It's used in apiClient (/libs/api.js) upon 401 errors from our API
-    loginUrl: "https://tally.so/r/3xpPqd",
+    loginUrl: "/form",
     // REQUIRED — the path you want to redirect users after successfull login (i.e. /dashboard, /private). This is normally a private page for users to manage their accounts. It's used in apiClient (/libs/api.js) upon 401 errors from our API & in ButtonSignin.js
     callbackUrl: "/dashboard",
   },

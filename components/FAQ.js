@@ -7,22 +7,21 @@ import { useRef, useState } from "react";
 
 const faqList = [
   {
-    question: "What do I get exactly?",
-    answer: <div className="space-y-2 leading-relaxed">Loreum Ipseum</div>,
+    question: "On se présente?",
+    answer: <div className="space-y-2 leading-relaxed">BienAjusté c’est une société qui a pour seul ambition de faciliter la réalisation des transactions, de trouver le match parfait entre les acquéreurs et les biens sous mandats.</div>,
   },
   {
-    question: "Can I get a refund?",
+    question: "Combien ça nous coute vraiment?",
     answer: (
       <p>
-        Yes! You can request a refund within 7 days of your purchase. Reach out
-        by email.
+        Vous recevez les demandes des acquéreurs. Si vous avez le bien qui convient, on vous met en contact avec l’acquéreur pour 10 euros. Après, c’est vous qui gérez. Pas plus. Attention, on a une obligation de moyen, pas de résultat. On a rien dit, mais normalement, si l’acquéreur a bien défini son projet et que vous avez en mandat le bien qui convient, c’est tout bon.
       </p>
     ),
   },
   {
-    question: "I have another question",
+    question: "J'ai une autre question",
     answer: (
-      <div className="space-y-2 leading-relaxed">Cool, contact us by email</div>
+      <div className="space-y-2 leading-relaxed">Cool, contactez nous par email</div>
     ),
   },
 ];
@@ -56,18 +55,16 @@ const Item = ({ item }) => {
             width="16"
             height="2"
             rx="1"
-            className={`transform origin-center transition duration-200 ease-out ${
-              isOpen && "rotate-180"
-            }`}
+            className={`transform origin-center transition duration-200 ease-out ${isOpen && "rotate-180"
+              }`}
           />
           <rect
             y="7"
             width="16"
             height="2"
             rx="1"
-            className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-              isOpen && "rotate-180 hidden"
-            }`}
+            className={`transform origin-center rotate-90 transition duration-200 ease-out ${isOpen && "rotate-180 hidden"
+              }`}
           />
         </svg>
       </button>
@@ -94,7 +91,7 @@ const FAQ = () => {
         <div className="flex flex-col text-left basis-1/2">
           <p className="inline-block font-semibold text-primary mb-4">FAQ</p>
           <p className="sm:text-4xl text-3xl font-extrabold text-base-content">
-            Frequently Asked Questions
+            Foire aux questions
           </p>
         </div>
 

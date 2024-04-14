@@ -17,10 +17,10 @@ const links = [
   //   href: "/#testimonials",
   //   label: "Reviews",
   // },
-  {
-    href: "/#faq",
-    label: "FAQ",
-  },
+  // {
+  //   href: "/#faq",
+  //   label: "FAQ",
+  // },
 ];
 
 const cta = <ButtonSignin extraStyle="btn-primary" />;
