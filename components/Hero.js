@@ -1,6 +1,7 @@
 import Image from "next/image";
 import TestimonialsAvatars from "./TestimonialsAvatars";
 import config from "@/config";
+import ButtonSignin from "@/components/ButtonSignin";
 
 const Hero = () => {
   return (
@@ -25,11 +26,12 @@ const Hero = () => {
           Prospectez autrement, gagnez du temps.
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
-          Recevez les demandes d’acquéreurs potentiels motivés directement par mail.
+          Recevez les demandes d’acquéreurs potentiels motivés directement par email.
         </p>
-        <button className="btn btn-primary btn-wide">
+        {/* <button className="btn btn-primary btn-wide">
           {config.subscribeToApp}
-        </button>
+        </button> */}
+        <ButtonSignin text="Rentrer dans le réseau" extraStyle="btn btn-primary btn-wide" />
 
         {/* <TestimonialsAvatars priority={true} /> */}
       </div>

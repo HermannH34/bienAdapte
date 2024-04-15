@@ -1,11 +1,14 @@
 import config from "@/config";
 import ButtonCheckout from "./ButtonCheckout";
+import ButtonSignin from "./ButtonSignin";
 
 // <Pricing/> displays the pricing plans for your app
 // It's your Stripe config in config.js.stripe.plans[] that will be used to display the plans
 // <ButtonCheckout /> renders a button that will redirect the user to Stripe checkout called the /api/stripe/create-checkout API endpoint with the correct priceId
 
 const Pricing = () => {
+  const cta = <ButtonSignin extraStyle="btn-primary" text="Rentrer dans le réseau" />;
+
   return (
     <section className="bg-base-200 overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-5xl mx-auto">
@@ -90,7 +93,8 @@ const Pricing = () => {
                   </ul>
                 )}
                 <div className="space-y-2">
-                  <ButtonCheckout priceId={plan.priceId} />
+                  {/* <ButtonCheckout priceId={plan.priceId} /> */}
+                  {cta}
 
                   <p className="flex items-center justify-center gap-2 text-sm text-center text-base-content/80 font-medium relative">
                     {/* Pay once. Access forever. */}

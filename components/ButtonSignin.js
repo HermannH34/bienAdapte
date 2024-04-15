@@ -50,33 +50,18 @@ const ButtonSignin = ({ text = "je suis un agent", extraStyle }) => {
   //   );
   // }
 
-  if (pathname === "/form") {
-    return (
+
+  return (
+    <>
       <Link
         className={`btn ${extraStyle ? extraStyle : ""}`}
-        href={"/#"}
+        href={config.auth.loginUrl}
       >
-        {"Je suis un agent"}
+        {text}
       </Link>
-    );
-  } else {
-    return (
-      <>
-        <Link
-          className={`btn btn-secondary mr-4`}
-          href={config.auth.loginUrl}>
-          {"Je recherche un bien"}
-        </Link >
-        <Link
-          className={`btn ${extraStyle ? extraStyle : ""}`}
-          href={config.auth.loginUrl}
-        >
-          {text}
-        </Link>
-      </>
-    );
+    </>
+  );
 
-  }
 
 };
 
