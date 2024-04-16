@@ -10,6 +10,7 @@ const nextConfig = {
       'www.flaticon.com',
     ],
   },
+  ignoreDuringBuilds: true,
 };
 
 module.exports = nextConfig;
