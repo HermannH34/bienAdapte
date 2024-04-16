@@ -11,6 +11,7 @@ import config from "@/config";
 export default function Login() {
   const supabase = createClientComponentClient();
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -33,12 +34,13 @@ export default function Login() {
       } else if (type === "magic_link") {
         await supabase.auth.signInWithOtp({
           email,
+          phone,
           options: {
             emailRedirectTo: redirectURL,
           },
         });
 
-        toast.success("Check your emails!");
+        toast.success("Allez voir vos  emails!");
 
         setIsDisabled(true);
       }
@@ -125,6 +127,16 @@ export default function Login() {
             placeholder="tom@cruise.com"
             className="input input-bordered w-full placeholder:opacity-60"
             onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            required
+            type="phone"
+            value={phone}
+            autoComplete="nom"
+            placeholder="Nom"
+            className="input input-bordered w-full placeholder:opacity-60"
+            onChange={(e) => setPhone(e.target.value)}
           />
 
           <button

@@ -10,6 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@headlessui/react": "^1.7.17",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
     "@supabase/supabase-js": "^2.38.3",
@@ -20,6 +23,7 @@
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.6",
     "form-data": "^4.0.0",
+    "framer-motion": "^11.1.1",
     "mailgun.js": "^9.2.1",
     "next": "^14.0.0",
     "next-plausible": "^3.11.3",
