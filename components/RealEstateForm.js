@@ -49,7 +49,7 @@ const RealEstateForm = ({ resetForm }) => {
                 <>
                     <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale</h3>
                     <Image
-                        src="/realEstate.png"
+                        src="/cle.png"
                         width={75}
                         height={75}
                         alt="Picture of the author"
@@ -62,7 +62,7 @@ const RealEstateForm = ({ resetForm }) => {
                         </div>
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Un joli appartement</label>
+                            <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Un bel appartement</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
@@ -150,7 +150,7 @@ const RealEstateForm = ({ resetForm }) => {
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">local velo obligatoire</label>
+                            <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">local vélo obligatoire</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
@@ -271,7 +271,7 @@ const RealEstateForm = ({ resetForm }) => {
                         height={80}
                         alt="Picture of the author"
                     />
-                    <h1 className='text-2xl font-semibold font-sans mt-4'>Combien de salle de bains? (les embouteillages y en a marre)</h1>
+                    <h1 className='text-2xl font-semibold font-sans mt-4'>Combien de salle de bains? (les embouteillages y'en a marre)</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div>
 
@@ -344,7 +344,7 @@ const RealEstateForm = ({ resetForm }) => {
                 <>
                     <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <Image
-                        src="/money-bag.png"
+                        src="/coeur.png"
                         width={80}
                         height={80}
                         alt="Picture of the author"
@@ -375,7 +375,7 @@ const RealEstateForm = ({ resetForm }) => {
                 <>
                     <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <Image
-                        src="/handshake.png"
+                        src="/foudre.png"
                         width={80}
                         height={80}
                         alt="Picture of the author"
@@ -457,7 +457,7 @@ const RealEstateForm = ({ resetForm }) => {
                     <>
                         <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                         <Image
-                            src="/residential.png"
+                            src="/accueil.png"
                             width={80}
                             height={80}
                             alt="Picture of the author"
@@ -493,7 +493,7 @@ const RealEstateForm = ({ resetForm }) => {
             {formContent === 'quartier' && (
                 <>
                     <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
-                    <h1 className='text-2xl font-semibold font-sans'>Les services qui doivent être à coté:</h1>
+                    <h1 className='text-2xl font-semibold font-sans'>Les services qui doivent être à proximité:</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("servicesDeProximite")} id="ecole" type="checkbox" value="ecole" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -501,7 +501,7 @@ const RealEstateForm = ({ resetForm }) => {
                         </div>
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("servicesDeProximite")} id="tramway" type="checkbox" value="tramway" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="tramway-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">le tram ?</label>
+                            <label htmlFor="tramway-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">les transports en commun ?</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
