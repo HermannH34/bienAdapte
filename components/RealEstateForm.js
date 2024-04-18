@@ -116,7 +116,7 @@ const RealEstateForm = ({ resetForm }) => {
             {(formContent === "surface") && (
 
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / type</h3>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <Image
                         src={realEstateImg}
                         width={80}
@@ -177,7 +177,7 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && formContent === "propertyAge") && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / type</h3>
+                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
                     <h1 className='text-2xl font-semibold font-sans'>Une maison: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
