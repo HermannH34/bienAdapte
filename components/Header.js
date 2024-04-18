@@ -176,7 +176,7 @@ const Header = () => {
             <div className="divider"></div>
             {/* Your CTA on small screens */}
             <Link
-              className={`btn btn-secondary mr-4`}
+              className={`btn btn-secondary mb-2`}
               href={config.auth.formUrl}>
               {"Je recherche un bien"}
             </Link >
