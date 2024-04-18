@@ -175,12 +175,14 @@ const Header = () => {
             </div>
             <div className="divider"></div>
             {/* Your CTA on small screens */}
-            <Link
-              className={`btn btn-secondary mb-2`}
-              href={config.auth.formUrl}>
-              {"Je recherche un bien"}
-            </Link >
-            <div className="flex flex-col">{cta}</div>
+            <div className="flex flex-col">
+              <Link
+                className={`btn btn-secondary mb-2`}
+                href={config.auth.formUrl}>
+                {"Je recherche un bien"}
+              </Link >
+              {cta}
+            </div>
           </div>
         </div>
       </div>
