@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image'
-import realEstateForm from '@/app/form/page';
+import realEstateForm from '@/app/form/residenceprincipale/page';
 import { randomBytes } from 'crypto';
 
 const RealEstateForm = ({ resetForm }) => {
@@ -127,11 +127,11 @@ const RealEstateForm = ({ resetForm }) => {
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
+                            <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">dans un immeuble moderne</label>
                         </div>
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">typique</label>
+                            <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">dans un immeuble classique</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>

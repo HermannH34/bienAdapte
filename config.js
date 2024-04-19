@@ -97,6 +97,7 @@ const config = {
     callbackUrl: "/dashboard",
     formUrl: "/form"
   },
+  formUrlResidencePrincipale: "form/residenceprincipale",
 };
 
 export default config;
