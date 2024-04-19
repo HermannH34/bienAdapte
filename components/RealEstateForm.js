@@ -47,13 +47,22 @@ const RealEstateForm = ({ resetForm }) => {
         <div style={{ marginLeft: '16em', marginTop: '6em', position: 'relative' }}>
             {formContent === 'initial' && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale</h3>
-                    <Image
-                        src="/cle.png"
-                        width={75}
-                        height={75}
-                        alt="Picture of the author"
-                    />
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
+                    <div className="pt-10">
+                        <Image
+                            src="/cle.png"
+                            width={75}
+                            height={75}
+                            alt="Picture of the author"
+                        />
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans mt-8'>Quel type de bien recherchez-vous?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -70,13 +79,22 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'appartement' || formContent === 'maison') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {formContent} / surface</h3>
-                    <Image
-                        src="/ruler.png"
-                        width={80}
-                        height={80}
-                        alt="Picture of the author"
-                    />
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
+                    <div className="pt-10">
+                        <Image
+                            src="/ruler.png"
+                            width={80}
+                            height={80}
+                            alt="Picture of the author"
+                        />
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div className='mb-2'>
@@ -116,22 +134,31 @@ const RealEstateForm = ({ resetForm }) => {
             {(formContent === "surface") && (
 
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
-                    <Image
-                        src={realEstateImg}
-                        width={80}
-                        height={80}
-                        alt="Picture of the author"
-                    />
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
+                    {/* <div className="pt-10">
+                        <Image
+                            src={realEstateImg}
+                            width={80}
+                            height={80}
+                            alt="Picture of the author"
+                        />
+                    </div> */}
                     <h1 className='text-2xl font-semibold font-sans mt-8'>On parle d’{typeOfPropertyString}: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">dans un immeuble moderne</label>
+                            <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
                         </div>
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">dans un immeuble classique</label>
+                            <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">classique</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
@@ -139,7 +166,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / moyens de locomotion</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/bicycle.png"
                         width={80}
@@ -158,7 +192,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'appartement' && formContent === "velo") && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/car.png"
                         width={80}
@@ -177,7 +218,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && formContent === "propertyAge") && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans'>Une maison: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -194,7 +242,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && (formContent === 'ville' || formContent === 'pavillonnaire')) && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / jardin</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans'>Le jardin: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -215,7 +270,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(typeOfproperty === 'maison' && formContent.slice(0, 6) === 'jardin') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / piscine</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans'>Et on va plus loin... une piscine ??</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -232,13 +294,22 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === "parking" || formContent.slice(0, 7) === 'piscine') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} /chambre(s) </h3>
-                    <Image
-                        src="/bed.png"
-                        width={80}
-                        height={80}
-                        alt="Picture of the author"
-                    />
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
+                    <div className="pt-10">
+                        <Image
+                            src="/bed.png"
+                            width={80}
+                            height={80}
+                            alt="Picture of the author"
+                        />
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <div>
@@ -264,7 +335,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'bedrooms') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / salle(s) de bain</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/bathroom.png"
                         width={80}
@@ -296,7 +374,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'bathrooms') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / budget</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/money-bag.png"
                         width={80}
@@ -342,7 +427,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent.slice(0, 6) === 'budget') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / budget</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/coeur.png"
                         width={80}
@@ -373,7 +465,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'coupDeCoeur') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology}</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/foudre.png"
                         width={80}
@@ -400,7 +499,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {(formContent === 'coupDeFoudre') && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / travaux</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/maintenance.png"
                         width={80}
@@ -430,7 +536,14 @@ const RealEstateForm = ({ resetForm }) => {
             )}
             {formContent === 'travaux' && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / travaux</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <Image
                         src="/maintenance.png"
                         width={80}
@@ -455,7 +568,14 @@ const RealEstateForm = ({ resetForm }) => {
             {formContent === 'travauxDansBudget' && (
                 <>
                     <>
-                        <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / localisation</h3>
+                        <div>
+                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <li className="step step-primary">Type de bien</li>
+                                <li className="step step-primary">Budget</li>
+                                <li className="step step-primary">Localisation et environnement</li>
+                                <li className="step">Votre priorité</li>
+                            </ul>
+                        </div>
                         <Image
                             src="/accueil.png"
                             width={80}
@@ -492,7 +612,14 @@ const RealEstateForm = ({ resetForm }) => {
             }
             {formContent === 'quartier' && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / services</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step step-primary">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans'>Les services qui doivent être à proximité:</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -510,7 +637,14 @@ const RealEstateForm = ({ resetForm }) => {
             }
             {formContent === 'servicesDeProximite' && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / environnement</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step step-primary">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans'>Les petits plus à coté:</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
@@ -538,7 +672,14 @@ const RealEstateForm = ({ resetForm }) => {
             )} */}
             {formContent === 'loisirsAproximite' && (
                 <>
-                    <h3 className='mb-8' style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>Résidence principale / {chronology} / les essentiels</h3>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step step-primary">Localisation et environnement</li>
+                            <li className="step step-primary">Votre priorité</li>
+                        </ul>
+                    </div>
                     <h1 className='text-2xl font-semibold font-sans'>Votre priorité: </h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                         <textarea
