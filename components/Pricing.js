@@ -15,8 +15,7 @@ const Pricing = () => {
         <div className="flex flex-col text-center w-full mb-20">
           <p className="font-medium text-primary mb-8">Prix</p>
           <h2 className="font-bold text-3xl lg:text-5xl tracking-tight">
-            Pas de commission s'il y a une transaction !
-            10 euros par contact, rien de plus c’est promis.
+            Pas de commission à la transaction, c’est 10 euros par opportunité, rien de plus c’est promis.
           </h2>
         </div>
 
