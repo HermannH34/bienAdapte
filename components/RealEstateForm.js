@@ -228,6 +228,40 @@ const RealEstateForm = ({ resetForm }) => {
                     </form>
                 </>
             )}
+            {
+                (typeOfproperty === 'appartement' && formContent === 'parking') && (
+                    <>
+                        <div>
+                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <li className="step step-primary">Type de bien</li>
+                                <li className="step">Budget</li>
+                                <li className="step">Localisation et environnement</li>
+                                <li className="step">Votre priorité</li>
+                            </ul>
+                        </div>
+                        <div className="pt-10">
+                            <Image
+                                src="/chauffe-eau.png"
+                                width={80}
+                                height={80}
+                                alt="Picture of the author"
+                            />
+                        </div>
+                        <h1 className='text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                            <div className="flex items-center mb-2 mt-4">
+                                <input {...register("chauffage")} id="chauffage-oui-checkbox" type="checkbox" value="chauffage-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <label htmlFor="chauffage-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">collectif</label>
+                            </div>
+                            <div className="flex items-center mb-2 mt-4">
+                                <input {...register("chauffage")} id="chauffage-non-checkbox" type="checkbox" value="chauffage-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <label htmlFor="chauffage-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">individuel</label>
+                            </div>
+                            <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                        </form>
+                    </>
+                )
+            }
             {(typeOfproperty === 'maison' && formContent === "propertyAge") && (
                 <>
                     <div>
@@ -334,7 +368,7 @@ const RealEstateForm = ({ resetForm }) => {
                 )
             }
             {
-                (formContent === "parking" || formContent.slice(0, 7) === 'piscine') && (
+                (formContent === "chauffage" || formContent.slice(0, 7) === 'piscine') && (
                     <>
                         <div>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
