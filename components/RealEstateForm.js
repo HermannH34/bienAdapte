@@ -182,11 +182,15 @@ const RealEstateForm = ({ resetForm }) => {
                             alt="Picture of the author"
                         />
                     </div>
-                    <h1 className='text-2xl font-semibold font-sans mt-4'> On se déplace?</h1>
+                    <h1 className='text-2xl font-semibold font-sans mt-4'> On se déplace à vélo?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">local vélo obligatoire</label>
+                            <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans mon immeuble</label>
+                        </div>
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
@@ -210,11 +214,15 @@ const RealEstateForm = ({ resetForm }) => {
                             alt="Picture of the author"
                         />
                     </div>
-                    <h1 className='text-2xl font-semibold font-sans mt-8'>La voiture:</h1>
+                    <h1 className='text-2xl font-semibold font-sans mt-8'>On se déplace en voiture?</h1>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                         <div className="flex items-center mb-2 mt-4">
                             <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label htmlFor="parking" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Je veux un parking</label>
+                            <label htmlFor="parking" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je veux une place de parking au sein de mon immeuble</label>
+                        </div>
+                        <div className="flex items-center mb-2 mt-4">
+                            <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="parking" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ça m'est égal</label>
                         </div>
                         <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
                     </form>
