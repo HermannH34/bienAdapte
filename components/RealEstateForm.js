@@ -1,33 +1,26 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image'
-import realEstateForm from '@/app/form/residenceprincipale/page';
-import { randomBytes } from 'crypto';
-import Link from 'next/link';
-import config from '@/config';
 
-const RealEstateForm = ({ resetForm }) => {
-    const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+
+const RealEstateForm = () => {
+    const { register, handleSubmit, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
     const [typeOfproperty, setTypeOfProperty] = useState('');
-    const [chronology, setChronolgy] = useState('Résidence principale')
 
     let typeOfPropertyString = '';
-    let realEstateImg = '';
+
     if (typeOfproperty === 'appartement') {
-        typeOfPropertyString = 'un appartement';
-        realEstateImg = '/buildings.png';
+        typeOfPropertyString = 'un appartement'
     } else {
         typeOfPropertyString = 'une maison';
-        realEstateImg = '/home.png';
     }
 
 
     const onFormSubmit = data => {
         console.log("Data :", data);
         if (formContent === "appartement" || formContent === "maison") {
-            setChronolgy(formContent)
             setTypeOfProperty(formContent);
         }
 
@@ -36,20 +29,14 @@ const RealEstateForm = ({ resetForm }) => {
         } else {
             const formValue = Object.keys(data)[0]
             setFormContent(formValue);
-
-            if (formValue === "appartement" || formValue === "maison") {
-                setChronolgy(chronology)
-            }
-            console.log('chronology:', chronology)
         }
 
         reset();
     };
 
     return (
-        // style={{ fontFamily: 'Roboto, sans-serif' }}
         <>
-            <div style={{ marginLeft: '16em', marginTop: '6em', position: 'relative', fontFamily: 'Roboto, sans-serif' }} >
+            <div style={{ marginLeft: '16em', marginTop: '6em', position: 'relative' }}>
                 {formContent === 'initial' && (
                     <>
                         <div>
@@ -68,7 +55,7 @@ const RealEstateForm = ({ resetForm }) => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-8'>Quel type de bien recherchez-vous?</h1>
+                        <h1 className='text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
