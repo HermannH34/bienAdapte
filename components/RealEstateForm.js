@@ -875,7 +875,30 @@ const RealEstateForm = ({ resetForm }) => {
                     </>
                 )
             }
+            {
+                formContent === 'nonNegociable' && (
+                    <>
+                        <div>
+                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <li className="step step-primary">Type de bien</li>
+                                <li className="step step-primary">Budget</li>
+                                <li className="step step-primary">Localisation et environnement</li>
+                                <li className="step step-primary">Votre priorité</li>
+                            </ul>
+                        </div>
+                        <div className="pt-10">
+                        </div>
+                        <h1 className='text-2xl font-semibold font-sans mt-4'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                            <input type="text"  {...register("email")} placeholder="Email" className="input input-bordered input-info w-full max-w-xs mb-3" />
+                            <input type="text"  {...register("name")} placeholder="Nom prénom" className="input input-bordered input-info w-full max-w-xs mb-3" />
+                            <button type="submit" className="btn btn-secondary">Envoyer</button>
+                        </form>
+                    </>
+                )
+            }
         </div >
+
 
     );
 };
