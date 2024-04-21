@@ -23,6 +23,7 @@ const RealEstateForm = ({ resetForm }) => {
 
 
     const onFormSubmit = data => {
+        console.log("Data :", data);
         if (formContent === "appartement" || formContent === "maison") {
             setChronolgy(formContent)
             setTypeOfProperty(formContent);
@@ -785,14 +786,57 @@ const RealEstateForm = ({ resetForm }) => {
                     </>
                 )
             }
-            {/* {formContent === 'loisirsAproximite' && (
+            {formContent === 'loisirsAproximite' && (
                 <>
-                    <h1 className='text-2xl font-semibold font-sans'>Plus généralement, quelle ambiance vous parle le plus?</h1>
+                    <div>
+                        <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <li className="step step-primary">Type de bien</li>
+                            <li className="step step-primary">Budget</li>
+                            <li className="step step-primary">Localisation et environnement</li>
+                            <li className="step">Votre priorité</li>
+                        </ul>
+                    </div>
+                    <div className="pt-10">
+
+                    </div>
+                    <h1 className='text-2xl font-semibold font-sans mt-4'>Plus généralement, quelle ambiance vous parle le plus?</h1>
+                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                        <div className='flex flex-row'>
+                            <div className="flex flex-col items-center mb-2 mr-4 mt-4">
+                                <input {...register("ambiance")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <Image
+                                    src="/parc.png"
+                                    width={80}
+                                    height={80}
+                                    alt="parcs"
+                                />
+                            </div>
+                            <div className="flex items-center mb-2 mt-4 ml-4 mr-4 flex-col">
+                                <input {...register("ambiance")} id="calm" type="checkbox" value="calm" className="w-5 mb-2 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <Image
+                                    src="/calme.png"
+                                    width={80}
+                                    height={80}
+                                    alt="calm"
+                                />
+                            </div>
+                            <div className="flex items-center mb-2 mt-4 ml-4 flex-col">
+                                <input {...register("ambiance")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <Image
+                                    src="/biere.png"
+                                    width={80}
+                                    height={80}
+                                    alt="restaurants/bars"
+                                />
+                            </div>
+                        </div>
+                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Soumettre</button>
+                    </form>
 
                 </>
-            )} */}
+            )}
             {
-                formContent === 'loisirsAproximite' && (
+                formContent === 'ambiance' && (
                     <>
                         <div>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
