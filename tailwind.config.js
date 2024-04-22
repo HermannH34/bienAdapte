@@ -65,6 +65,6 @@ module.exports = {
     // Add "data-theme='theme_name" to any HTML tag to enable the 'theme_name' theme.
     // https://daisyui.com/
     themes: ["cupcake"],
-    // Themes other choices: "winter"
+
   },
 };
