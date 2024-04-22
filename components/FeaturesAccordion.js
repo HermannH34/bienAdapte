@@ -16,8 +16,8 @@ const features = [
     description:
       "Send transactional emails, setup your DNS to avoid spam folder (DKIM, DMARC, SPF in subdomain), and listen to webhook to receive & forward emails",
     type: "video",
-    path: "https://d3m8mk7e1mf7xn.cloudfront.net/app/newsletter.webm",
-    format: "video/webm",
+    path: "/videoLandingPage2.mp4",
+    format: "video/mp4",
     svg: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -147,10 +147,11 @@ const Item = ({ feature, isOpen, setFeatureSelected }) => {
 // Video are set to autoplay for best UX.
 const Media = ({ feature }) => {
   const { type, path, format, alt } = feature;
+  console.log("HERE path video", path)
   const style = "rounded-2xl aspect-square w-full sm:w-[26rem]";
   const size = {
-    width: 500,
-    height: 500,
+    width: 800,
+    height: 800,
   };
 
   if (type === "video") {
