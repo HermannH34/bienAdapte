@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 const faqList = [
   {
     question: "On se présente?",
-    answer: <div className="space-y-2 leading-relaxed">BienAdapté c’est une société qui a pour seul ambition de faciliter la réalisation des transactions, de trouver le match parfait entre les acquéreurs et les biens sous mandats.</div>,
+    answer: <div className="space-y-2 leading-relaxed">BienAdapté c’est une société qui a pour seule ambition de faciliter la réalisation des transactions, de trouver le match parfait entre les acquéreurs et les biens sous mandats.</div>,
   },
   {
     question: "C’est quoi le deal?",
