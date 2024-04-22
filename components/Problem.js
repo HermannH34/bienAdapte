@@ -59,7 +59,7 @@ const Problem = () => {
 
           <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
 
-          <Step emoji="😔" text="j’alerte BienAjusté et c’est parti pour la visite" />
+          <Step emoji="😔" text="j’alerte BienAdapté et c’est parti pour la visite" />
         </div>
       </div>
     </section>

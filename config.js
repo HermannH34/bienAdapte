@@ -2,7 +2,7 @@ import themes from "daisyui/src/theming/themes.js";
 
 const config = {
   // REQUIRED
-  appName: "BienAjuste",
+  appName: "BienAdapte",
   subscribeToApp: "Rentrez dans le réseau",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
