@@ -51,15 +51,15 @@ const Problem = () => {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6">
-          <Step emoji="🧑‍💻" text="je reçois les demandes des acquéreurs" />
+          <Step emoji="📧" text="je reçois les demandes des acquéreurs" />
 
           <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
 
-          <Step emoji="😮‍💨" text="je regarde si j’ai le bien qui convient parfaitement" />
+          <Step emoji="🏙️" text="je regarde si j’ai le bien qui convient parfaitement" />
 
           <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
 
-          <Step emoji="😔" text="j’alerte BienAdapté et c’est parti pour la visite" />
+          <Step emoji="❤️‍🔥" text="j’alerte BienAdapté et c’est parti pour la visite" />
         </div>
       </div>
     </section>
