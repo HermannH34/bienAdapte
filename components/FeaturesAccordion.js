@@ -147,10 +147,10 @@ const Item = ({ feature, isOpen, setFeatureSelected }) => {
 // Video are set to autoplay for best UX.
 const Media = ({ feature }) => {
   const { type, path, format, alt } = feature;
-  console.log("HERE path video", path)
-  const style = "rounded-2xl aspect-square w-full sm:w-[26rem]";
+
+  const style = "rounded-2xl aspect-square w-506 sm:w-[506rem]";
   const size = {
-    width: 800,
+    width: 1000,
     height: 800,
   };
 
@@ -194,15 +194,15 @@ const FeaturesAccordion = () => {
       className="py-24 md:py-32 space-y-24 md:space-y-32 max-w-7xl mx-auto bg-base-100 "
       id="features"
     >
-      <div className="px-8">
-        <h2 className="font-extrabold text-4xl lg:text-6xl tracking-tight mb-12 md:mb-24">
+      <div className="px-4">
+        <h2 className="font-extrabold text-4xl lg:text-6xl tracking-tight mb-1 md:mb-4">
           Rien de plus
-          <span className="bg-neutral text-neutral-content px-2 md:px-4 ml-1 md:ml-1.5 leading-relaxed whitespace-nowrap">
+          <span className="bg-neutral text-neutral-content px-1 md:px-4 ml-1 md:ml-1.5 leading-relaxed whitespace-nowrap">
             simple !
           </span>
         </h2>
         <div className=" flex flex-col md:flex-row gap-12 md:gap-24">
-          <div className="grid grid-cols-1 items-stretch gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="grid grid-cols-1 items-stretch gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-20 ">
             {/* <ul className="w-full">
               {features.map((feature, i) => (
                 <Item
@@ -215,11 +215,11 @@ const FeaturesAccordion = () => {
               ))}
             </ul> */}
 
-            <Media feature={features[featureSelected]} key={featureSelected} />
+            < Media feature={features[featureSelected]} key={featureSelected} />
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
