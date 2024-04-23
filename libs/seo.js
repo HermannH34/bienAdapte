@@ -34,13 +34,13 @@ export const getSEOTags = ({
       url: openGraph?.url || `https://${config.domainName}/`,
       siteName: openGraph?.title || config.appName,
       // If you add an opengraph-image.(jpg|jpeg|png|gif) image to the /app folder, you don't need the code below
-      images: [
-        {
-          url: `https://${config.domainName}/bienAdapte.png`,
-          width: 1200,
-          height: 660,
-        },
-      ],
+      // images: [
+      //   {
+      //     url: `https://${config.domainName}/share.png`,
+      //     width: 1200,
+      //     height: 660,
+      //   },
+      // ],
       locale: "en_US",
       type: "website",
     },
