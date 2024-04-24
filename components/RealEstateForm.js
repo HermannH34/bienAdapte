@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image'
+import './style.css';
 
 
 const RealEstateForm = () => {
@@ -34,13 +35,17 @@ const RealEstateForm = () => {
         reset();
     };
 
+
+
+
     return (
         <>
-            <div style={{ marginLeft: '16em', marginTop: '6em', position: 'relative' }}>
+            <div className="container"
+            >
                 {formContent === 'initial' && (
                     <>
                         <div>
-                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }} >
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
                                 <li className="step">Localisation et environnement</li>
