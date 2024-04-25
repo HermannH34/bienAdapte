@@ -52,7 +52,8 @@ const RealEstateForm = () => {
                                 <li className="step">Votre priorité</li>
                             </ul>
                         </div>
-                        <div className="pt-10">
+
+                        <div className="pt-6">
                             <Image
                                 src="/cle.png"
                                 width={75}
@@ -60,7 +61,7 @@ const RealEstateForm = () => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
+                        <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -93,16 +94,16 @@ const RealEstateForm = () => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
-                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                            <div className='mb-2'>
-                                <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
+                        <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="w-22 sm:w-45  mt-8">
+                            <div className='mb-2 sm:w-48'>
+                                <label htmlFor="number-input" className="w-20 block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
                                 <input
                                     {...register("surface")}
                                     type="number"
                                     id="number-input"
                                     aria-describedby="helper-text-explanation"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-54 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="37 m2"
                                     required
                                 />
@@ -114,7 +115,7 @@ const RealEstateForm = () => {
                                     type="number"
                                     id="number-input"
                                     aria-describedby="helper-text-explanation"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-54 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="300 m2"
                                     required
                                 />
@@ -148,7 +149,7 @@ const RealEstateForm = () => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-4'>On parle d’{typeOfPropertyString}: </h1>
+                        <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>On parle d’{typeOfPropertyString}: </h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -180,15 +181,15 @@ const RealEstateForm = () => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-4'> On se déplace à vélo?</h1>
+                        <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'> On se déplace à vélo?</h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans mon immeuble</label>
+                                <label htmlFor="velo" className="ml-2 text-base sm:text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans <br></br> mon immeuble</label>
                             </div>
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="velo" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
+                                <label htmlFor="velo" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
                             </div>
                             <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
                         </form>
@@ -212,15 +213,15 @@ const RealEstateForm = () => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-8'>On se déplace en voiture?</h1>
+                        <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-8'>On se déplace en voiture?</h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="parking" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je veux une place de parking au sein de mon immeuble</label>
+                                <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">je veux une place de parking au <br></br>sein de mon immeuble</label>
                             </div>
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="parking" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ça m'est égal</label>
+                                <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ça m'est égal</label>
                             </div>
                             <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
                         </form>
@@ -245,7 +246,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("chauffage")} id="chauffage-oui-checkbox" type="checkbox" value="chauffage-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -278,7 +279,7 @@ const RealEstateForm = () => {
                                 alt="Picture of the author"
                             />
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-4'>Une maison: </h1>
+                        <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Une maison: </h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-4">
                             <div className="flex items-center mb-2 mt-4">
                                 <input {...register("propertyType")} id="ville-checkbox" type="checkbox" value="ville" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -312,7 +313,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Le jardin: </h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le jardin: </h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("propertyType")} id="jardin-oui-checkbox" type="checkbox" value="jardin-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -350,7 +351,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Et on va plus loin... une piscine ?</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et on va plus loin... une piscine ?</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("propertyType")} id="piscine-oui-checkbox" type="checkbox" value="piscine-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -384,7 +385,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <div>
 
@@ -393,7 +394,7 @@ const RealEstateForm = () => {
                                         type="number"
                                         id="number-input"
                                         aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="3 chambres"
                                         required
                                     />
@@ -427,7 +428,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Combien de salle de bains? (les embouteillages y'en a marre)</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Combien de salle de bains? (les embouteillages y'en a marre)</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <div>
 
@@ -436,7 +437,7 @@ const RealEstateForm = () => {
                                         type="number"
                                         id="number-input"
                                         aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="2 salles de bains"
                                         required
                                     />
@@ -470,7 +471,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Votre budget: </h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre budget: </h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <div className='mb-2'>
                                     <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">La fourchette basse:</label>
@@ -479,7 +480,7 @@ const RealEstateForm = () => {
                                         type="number"
                                         id="number-input"
                                         aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="60 000 €"
                                         required
                                     />
@@ -491,7 +492,7 @@ const RealEstateForm = () => {
                                         type="number"
                                         id="number-input"
                                         aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="1 000 000 €"
                                         required
                                     />
@@ -527,7 +528,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>En cas de coup de coeur: </h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>En cas de coup de coeur: </h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <div>
                                     <input
@@ -535,7 +536,7 @@ const RealEstateForm = () => {
                                         type="number"
                                         id="number-input"
                                         aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="?????? €"
                                         required
                                     />
@@ -569,13 +570,13 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Il se déclenche comment le coup de foudre?</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Il se déclenche comment le coup de foudre?</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <textarea
                                     {...register("coupDeFoudre")}
                                     id="message"
                                     rows="4"
-                                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Lâchez vous ici...">
                                 </textarea>
                                 <button
@@ -607,7 +608,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Les travaux: </h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les travaux: </h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <label htmlFor="minmax-range" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Partant ou pas partant</label>
                                 <input
@@ -617,7 +618,7 @@ const RealEstateForm = () => {
                                     min="0"
                                     max="10"
                                     defaultValue="5"
-                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                                    className="w-full sm:w-22 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
                                 />
                                 <button
                                     type="submit"
@@ -626,6 +627,7 @@ const RealEstateForm = () => {
                                     Suivant
                                 </button>
                             </form>
+
                         </>
                     )
                 }
@@ -648,7 +650,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Inclus dans le budget ou pas?</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Inclus dans le budget ou pas?</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("travauxDansBudget")} id="travauxDansBudget-checkbox" type="checkbox" value="travauxDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -683,14 +685,14 @@ const RealEstateForm = () => {
                                         alt="Picture of the author"
                                     />
                                 </div>
-                                <h1 className='text-2xl font-semibold font-sans mt-4'>C’est bon, on a défini votre bien idéal. Mais il se situe où? </h1>
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>C’est bon, on a défini votre bien idéal. <br></br>Mais il se situe où? </h1>
                                 <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                     <div className="flex items-center w-12  mb-2 mt-4" style={{ width: '25em' }}>
                                         <label htmlFor="underline_select" className="sr-only">Votre quartier de rêve</label>
                                         <select
                                             {...register("quartier")}
                                             id="underline_select"
-                                            className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+                                            className="block py-2.5 px-0  w-22 sm:w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                                         >
                                             <option>Votre quartier de rêve</option>
                                             <option value="centre">Montpellier-Centre</option>
@@ -730,7 +732,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Les services qui doivent être à proximité:</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les services qui doivent être à proximité:</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("servicesDeProximite")} id="ecole" type="checkbox" value="ecole" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -764,7 +766,7 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Les petits plus à coté:</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les petits plus à coté:</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("loisirsAproximite")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -796,7 +798,7 @@ const RealEstateForm = () => {
                         <div className="pt-10">
 
                         </div>
-                        <h1 className='text-2xl font-semibold font-sans mt-4'>Plus généralement, quelle ambiance vous parle le plus?</h1>
+                        <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Plus généralement, quelle ambiance vous <br></br> parle le plus?</h1>
                         <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                             <div className='flex flex-row'>
                                 <div className="flex flex-col items-center mb-2 mr-4 mt-4">
@@ -851,13 +853,13 @@ const RealEstateForm = () => {
                                     alt="Picture of the author"
                                 />
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Votre priorité: </h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre priorité: </h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <textarea
                                     {...register("nonNegociable")}
                                     id="message"
                                     rows="4"
-                                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Ce qui n’est pas négociable...">
 
                                 </textarea>
@@ -885,7 +887,7 @@ const RealEstateForm = () => {
                             </div>
                             <div className="pt-10">
                             </div>
-                            <h1 className='text-2xl font-semibold font-sans mt-4'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                 <input type="text"  {...register("email", { required: true })} placeholder="Email" className="input input-bordered input-info w-full max-w-xs mb-3" />
                                 <input type="text"  {...register("name", { required: true })} placeholder="Nom prénom" className="input input-bordered input-info w-full max-w-xs mb-3" />
@@ -908,7 +910,8 @@ const RealEstateForm = () => {
                     <div className="flex flex-col items-center ">
                         <h1 className="text-2xl">Votre demande a bien été prise en compte, on reviens vers vous très vite. &#128077;</h1>
                     </div>
-                )}
+                )
+            }
         </>
 
     );

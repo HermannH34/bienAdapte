@@ -4,9 +4,15 @@
  position: relative;
 }
 
+.chronology {
+ margin-left: '-13em';
+ margin-top: '-5em';
+ position: 'absolute'
+}
+
 @media (max-width: 640px) {
  .container {
-  margin-left: 2em;
+  margin-left: 1.5em;
  }
 
 }
