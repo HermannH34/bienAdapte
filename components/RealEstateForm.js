@@ -97,15 +97,15 @@ const RealEstateForm = () => {
                             />
                         </div>
                         <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
-                        <form onSubmit={handleSubmit(onFormSubmit)} className="w-22 sm:w-45  mt-8">
-                            <div className='mb-2 sm:w-48'>
-                                <label htmlFor="number-input" className="w-20 block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                            <div className='mb-2'>
+                                <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
                                 <input
                                     {...register("surface")}
                                     type="number"
                                     id="number-input"
                                     aria-describedby="helper-text-explanation"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-54 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="37 m2"
                                     required
                                 />
@@ -117,7 +117,7 @@ const RealEstateForm = () => {
                                     type="number"
                                     id="number-input"
                                     aria-describedby="helper-text-explanation"
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-54 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="300 m2"
                                     required
                                 />
