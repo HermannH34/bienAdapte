@@ -44,8 +44,9 @@ const RealEstateForm = () => {
             >
                 {formContent === 'initial' && (
                     <>
-                        <div>
-                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }} >
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
+                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
                                 <li className="step">Localisation et environnement</li>
@@ -78,7 +79,8 @@ const RealEstateForm = () => {
                 )}
                 {(formContent === 'appartement' || formContent === 'maison') && (
                     <>
-                        <div>
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
@@ -133,8 +135,9 @@ const RealEstateForm = () => {
                 {(formContent === "surface") && (
 
                     <>
-                        <div>
-                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
+                            <ul className="steps mb-12 absolute -ml-14 -mt-5" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }} >
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
                                 <li className="step">Localisation et environnement</li>
@@ -165,7 +168,8 @@ const RealEstateForm = () => {
                 )}
                 {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
                     <>
-                        <div>
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
@@ -197,7 +201,8 @@ const RealEstateForm = () => {
                 )}
                 {(typeOfproperty === 'appartement' && formContent === "velo") && (
                     <>
-                        <div>
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
@@ -230,7 +235,8 @@ const RealEstateForm = () => {
                 {
                     (typeOfproperty === 'appartement' && formContent === 'parking') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step">Budget</li>
@@ -263,7 +269,8 @@ const RealEstateForm = () => {
                 }
                 {(typeOfproperty === 'maison' && formContent === "propertyAge") && (
                     <>
-                        <div>
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
@@ -297,7 +304,8 @@ const RealEstateForm = () => {
                 {
                     (typeOfproperty === 'maison' && (formContent === 'ville' || formContent === 'pavillonnaire')) && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step">Budget</li>
@@ -335,7 +343,8 @@ const RealEstateForm = () => {
                 {
                     (typeOfproperty === 'maison' && formContent.slice(0, 6) === 'jardin') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step">Budget</li>
@@ -369,7 +378,8 @@ const RealEstateForm = () => {
                 {
                     (formContent === "chauffage" || formContent.slice(0, 7) === 'piscine') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step">Budget</li>
@@ -412,7 +422,8 @@ const RealEstateForm = () => {
                 {
                     (formContent === 'bedrooms') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step">Budget</li>
@@ -455,7 +466,8 @@ const RealEstateForm = () => {
                 {
                     (formContent === 'bathrooms') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -512,7 +524,8 @@ const RealEstateForm = () => {
                 {
                     (formContent.slice(0, 6) === 'budget') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -554,7 +567,8 @@ const RealEstateForm = () => {
                 {
                     (formContent === 'coupDeCoeur') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -592,7 +606,8 @@ const RealEstateForm = () => {
                 {
                     (formContent === 'coupDeFoudre') && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -634,7 +649,8 @@ const RealEstateForm = () => {
                 {
                     formContent === 'travaux' && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -669,7 +685,8 @@ const RealEstateForm = () => {
                     formContent === 'travauxDansBudget' && (
                         <>
                             <>
-                                <div>
+                                <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                                <div className='hidden sm:block'>
                                     <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                         <li className="step step-primary">Type de bien</li>
                                         <li className="step step-primary">Budget</li>
@@ -716,7 +733,8 @@ const RealEstateForm = () => {
                 {
                     formContent === 'quartier' && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -750,7 +768,8 @@ const RealEstateForm = () => {
                 {
                     formContent === 'servicesDeProximite' && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -787,7 +806,8 @@ const RealEstateForm = () => {
                 }
                 {formContent === 'loisirsAproximite' && (
                     <>
-                        <div>
+                        <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                        <div className='hidden sm:block'>
                             <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step step-primary">Budget</li>
@@ -837,7 +857,8 @@ const RealEstateForm = () => {
                 {
                     formContent === 'ambiance' && (
                         <>
-                            <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Votre priorité:</h1>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -877,7 +898,7 @@ const RealEstateForm = () => {
                 {
                     formContent === 'nonNegociable' && (
                         <>
-                            <div>
+                            <div className='hidden sm:block'>
                                 <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
@@ -908,7 +929,7 @@ const RealEstateForm = () => {
             {
                 formContent === 'email' && (
                     <div className="flex flex-col items-center ">
-                        <h1 className="text-2xl">Votre demande a bien été prise en compte, on reviens vers vous très vite. &#128077;</h1>
+                        <h1 className="sm:text-sm lg:text-2xl">Votre demande a bien été prise en compte, <br className='sm:display lg:hidden'></br>on reviens vers vous très vite. &#128077;</h1>
                     </div>
                 )
             }

@@ -6,9 +6,9 @@ export default function realEstateForm() {
   <>
    <main className="pt-24">
     <div className="flex flex-col items-center ">
-     <h1 className="text-3xl mb-10">Définissons ensemble le bien de vos rêves!</h1>
+     <h1 className="sm:text-xl lg:text-3xl mb-10">Définissons ensemble le bien de vos rêves!</h1>
      <Link
-      className={`btn btn-secondary mb-8 w-1/5`}
+      className={`btn btn-secondary mb-8 lg:w-1/5`}
       href={config.formUrlResidencePrincipale}>
       {"C'est parti"}
      </Link >
