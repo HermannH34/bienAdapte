@@ -1,14 +1,8 @@
 .container {
- margin-left: 16em;
  margin-top: 6em;
  position: relative;
 }
 
-.chronology {
- margin-left: '-13em';
- margin-top: '-5em';
- position: 'absolute'
-}
 
 @media (max-width: 640px) {
  .container {

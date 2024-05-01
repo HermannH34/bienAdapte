@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import Image from 'next/image'
 import './style.css';
 
-
 const RealEstateForm = () => {
     const { register, handleSubmit, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
@@ -40,41 +39,43 @@ const RealEstateForm = () => {
 
     return (
         <>
-            <div className="container"
+            <div className="w-1/2 mx-auto"
             >
                 {formContent === 'initial' && (
                     <>
-                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
-                                <li className="step step-primary">Type de bien</li>
-                                <li className="step">Budget</li>
-                                <li className="step">Localisation et environnement</li>
-                                <li className="step">Votre priorité</li>
-                            </ul>
+                        <div>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <div className='hidden sm:block'>
+                                <ul className="steps mb-12">
+                                    <li className="step step-primary">Type de bien</li>
+                                    <li className="step">Budget</li>
+                                    <li className="step">Localisation et environnement</li>
+                                    <li className="step">Votre priorité</li>
+                                </ul>
+                            </div>
                         </div>
 
-                        <div className="pt-6">
+                        <div className='ml-16'>
                             <Image
                                 src="/cle.png"
                                 width={75}
                                 height={75}
                                 alt="Picture of the author"
                             />
+                            <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
+                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                <div className="flex items-center mb-2 mt-4">
+                                    <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label htmlFor="maison-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Une jolie maison</label>
+                                </div>
+                                <div className="flex items-center mb-2 mt-4">
+                                    <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Un bel appartement</label>
+                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-8 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                </button>
+                            </form>
                         </div>
-                        <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
-                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                            <div className="flex items-center mb-2 mt-4">
-                                <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="maison-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Une jolie maison</label>
-                            </div>
-                            <div className="flex items-center mb-2 mt-4">
-                                <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Un bel appartement</label>
-                            </div>
-                            <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                            </button>
-                        </form>
                     </>
                 )}
                 {(formContent === 'appartement' || formContent === 'maison') && (
@@ -929,7 +930,7 @@ const RealEstateForm = () => {
             {
                 formContent === 'email' && (
                     <div className="flex flex-col items-center ">
-                        <h1 className="sm:text-sm lg:text-2xl">Votre demande a bien été prise en compte, <br className='sm:display lg:hidden'></br>on reviens vers vous très vite. &#128077;</h1>
+                        <h1 className="sm:text-sm lg:text-2xl">Votre demande a bien été prise en compte, <br className='sm:display lg:hidden'></br>on revient vers vous très vite. &#128077;</h1>
                     </div>
                 )
             }
