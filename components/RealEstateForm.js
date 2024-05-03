@@ -8,6 +8,7 @@ const RealEstateForm = () => {
     const { register, handleSubmit, reset } = useForm();
     const [formContent, setFormContent] = useState('initial');
     const [typeOfproperty, setTypeOfProperty] = useState('');
+    const [isMasked, setIsMasked] = useState(true);
 
     let typeOfProperty = '';
 
@@ -20,6 +21,7 @@ const RealEstateForm = () => {
 
     const onFormSubmit = data => {
         console.log("Data :", data);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         if (formContent === "appartement" || formContent === "maison") {
             setTypeOfProperty(formContent);
         }
@@ -34,7 +36,9 @@ const RealEstateForm = () => {
         reset();
     };
 
-
+    const maskEvent = () => {
+        setIsMasked(!isMasked);
+    }
 
 
     return (
@@ -447,140 +451,125 @@ const RealEstateForm = () => {
                 {
                     (formContent.slice(0, 8) === 'bedrooms' || formContent.slice(0, 8) === 'bathrooms') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
-                                    <li className="step step-primary">Budget</li>
+                                    <li className="step">Budget</li>
                                     <li className="step">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
-                                <Image
-                                    src="/money-bag.png"
-                                    width={80}
-                                    height={80}
-                                    alt="Picture of the author"
-                                />
+                            <div className='ml-16'>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-6 max-w-sm">
+                                    <div className='mb-12'>
+                                        <div className="flex items-center">
+                                            <Image
+                                                src="/money-bag.png"
+                                                width={60}
+                                                height={60}
+                                                alt="Picture of the author"
+                                                className='mr-4'
+                                            />
+                                            <div>
+                                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre budget: </h1>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label htmlFor="budgetMin" className="block mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-white">La fourchette basse:</label>
+                                            <input
+                                                {...register("budgetMin")}
+                                                type="number"
+                                                id="budgetMin"
+                                                aria-describedby="helper-text-explanation"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="60 000 €"
+                                                required
+                                            />
+                                            <label htmlFor="budgetMax" className="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-white">La fourchette haute:</label>
+                                            <input
+                                                {...register("budgetMax")}
+                                                type="number"
+                                                id="budgetMax"
+                                                aria-describedby="helper-text-explanation"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="1 000 000 €"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="flex items-center pt-10">
+                                            <Image
+                                                src="/coeur.png"
+                                                width={60}
+                                                height={60}
+                                                alt="Picture of the author"
+                                                className='mr-4 mt-0'
+                                            />
+                                            <div>
+                                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>En cas de coup de coeur: </h1>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label htmlFor="coupDeCoeur" className="block mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-white">Montant:</label>
+                                            <input
+                                                {...register("coupDeCoeur")}
+                                                type="number"
+                                                id="coupDeCoeur"
+                                                aria-describedby="helper-text-explanation"
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="?????? €"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre budget: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <div className='mb-2'>
-                                    <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">La fourchette basse:</label>
-                                    <input
-                                        {...register("budgetMin")}
-                                        type="number"
-                                        id="number-input"
-                                        aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="60 000 €"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">La fourchette haute:</label>
-                                    <input
-                                        {...register("bugdetMax")}
-                                        type="number"
-                                        id="number-input"
-                                        aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="1 000 000 €"
-                                        required
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Suivant
-                                </button>
-                            </form>
                         </>
-
 
                     )
                 }
                 {
-                    (formContent.slice(0, 6) === 'budget') && (
+                    (formContent === 'budgetMin') && (
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
-                                <Image
-                                    src="/coeur.png"
-                                    width={80}
-                                    height={80}
-                                    alt="Picture of the author"
-                                />
-                            </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>En cas de coup de coeur: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <div>
-                                    <input
-                                        {...register("coupDeCoeur")}
-                                        type="number"
-                                        id="number-input"
-                                        aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="?????? €"
-                                        required
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Suivant
-                                </button>
-                            </form>
-                        </>
-                    )
-                }
-                {
-                    (formContent === 'coupDeCoeur') && (
-                        <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
-                            <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
-                                    <li className="step step-primary">Type de bien</li>
-                                    <li className="step step-primary">Budget</li>
-                                    <li className="step">Localisation et environnement</li>
-                                    <li className="step">Votre priorité</li>
-                                </ul>
-                            </div>
-                            <div className="pt-10">
+                            <div className='ml-16'>
                                 <Image
                                     src="/foudre.png"
-                                    width={80}
-                                    height={80}
+                                    width={70}
+                                    height={70}
                                     alt="Picture of the author"
                                 />
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Quels critères sont succeptibles de vous faire craquer?</h1>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                                    <textarea
+                                        {...register("coupDeFoudre")}
+                                        id="message"
+                                        rows="4"
+                                        className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Lâchez vous ici...">
+                                    </textarea>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Il se déclenche comment le coup de foudre?</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <textarea
-                                    {...register("coupDeFoudre")}
-                                    id="message"
-                                    rows="4"
-                                    className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Lâchez vous ici...">
-                                </textarea>
-                                <button
-                                    type="submit"
-                                    className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Suivant
-                                </button>
-                            </form>
                         </>
                     )
                 }
@@ -589,42 +578,79 @@ const RealEstateForm = () => {
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
-                                <Image
-                                    src="/maintenance.png"
-                                    width={80}
-                                    height={80}
-                                    alt="Picture of the author"
-                                />
-                            </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les travaux: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <label htmlFor="minmax-range" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Partant ou pas partant</label>
-                                <input
-                                    {...register("travaux")}
-                                    id="minmax-range"
-                                    type="range"
-                                    min="0"
-                                    max="10"
-                                    defaultValue="5"
-                                    className="w-full sm:w-22 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                                />
-                                <button
-                                    type="submit"
-                                    className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Suivant
-                                </button>
-                            </form>
+                            <div className='ml-16'>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                                    <div className='mb-10'>
+                                        <div className="flex items-center">
+                                            <Image
+                                                src="/maintenance.png"
+                                                width={60}
+                                                height={60}
+                                                alt="Picture of the author"
+                                                className='mr-4'
+                                            />
+                                            <div>
+                                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les travaux: </h1>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="flex items-center mb-2 mt-6">
+                                                <input onClick={maskEvent} checked={!isMasked} {...register("travaux")} id="travaux-oui-checkbox" type="checkbox" value="travaux-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="travaux-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">envisageables</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input onClick={maskEvent} {...register("travaux")} id="travaux-non-checkbox" type="checkbox" value="travaux-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="travaux-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">non envisageables</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {
+                                        (!isMasked) && (
+                                            <>
+                                                <div className='mb-10'>
+                                                    <h1 className='text-base mb-5 sm:text-2xl font-semibold font-sans mt-4'>L'ampleur des travaux: </h1>
+                                                    <input
+                                                        {...register("travaux")}
+                                                        id="minmax-range"
+                                                        type="range"
+                                                        min="0"
+                                                        max="10"
+                                                        defaultValue="5"
+                                                        className="w-full sm:w-22 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Inclus dans le budget?</h1>
+                                                    <div className="flex items-center mb-2 mt-4">
+                                                        <input {...register("travauxDansBudget")} id="travauxDansBudget-checkbox" type="checkbox" value="travauxDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                        <label htmlFor="travauxDansBudget-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
+                                                    </div>
+                                                    <div className="flex items-center mb-2 mt-4">
+                                                        <input {...register("travauxPasDansBudget")} id="travauxPasDansBudget" type="checkbox" value="travauxPasDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                        <label htmlFor="travauxPasDansBudget-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    }
 
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </form>
+                            </div>
                         </>
+
                     )
                 }
                 {
