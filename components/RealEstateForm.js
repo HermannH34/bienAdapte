@@ -13,7 +13,7 @@ const RealEstateForm = () => {
     let typeOfProperty = '';
 
     if (typeOfproperty === 'appartement') {
-        typeOfProperty = 'un appartement'
+        typeOfProperty = 'appartement'
     } else {
         typeOfProperty = 'maison';
     }
@@ -70,11 +70,11 @@ const RealEstateForm = () => {
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="maison-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Une jolie maison</label>
+                                    <label htmlFor="maison-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">une jolie maison</label>
                                 </div>
                                 <div className="flex items-center mb-2 mt-4">
                                     <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Un bel appartement</label>
+                                    <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">un bel appartement</label>
                                 </div>
                                 <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
                                 </button>
@@ -174,104 +174,147 @@ const RealEstateForm = () => {
                         </div>
                     </>
                 )}
+                {(formContent === "surface" && typeOfProperty === "appartement") && (
+                    <>
+                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
+                            <ul className="steps mb-12">
+                                <li className="step step-primary">Type de bien</li>
+                                <li className="step">Budget</li>
+                                <li className="step">Localisation et environnement</li>
+                                <li className="step">Votre priorité</li>
+                            </ul>
+                        </div>
+                        <div className='ml-16'>
+                            <Image
+                                src="/feux-dartifice.png"
+                                width={75}
+                                height={75}
+                                alt="Picture of the author"
+                            />
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
+                                Un appartement dans un bâtiment: </h1>
+                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                <div className="flex items-center mb-2 mt-4">
+                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
+                                </div>
+                                <div className="flex items-center mb-2 mt-4">
+                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ancien</label>
+                                </div>
+                                <div className="flex items-center mb-2 mt-4">
+                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                    <label htmlFor="indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
+                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                            </form>
+                        </div>
+                    </>
+                )}
                 {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
                     <>
                         <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
                         <div className='hidden sm:block'>
-                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                            <ul className="steps mb-12" >
                                 <li className="step step-primary">Type de bien</li>
                                 <li className="step">Budget</li>
                                 <li className="step">Localisation et environnement</li>
                                 <li className="step">Votre priorité</li>
                             </ul>
                         </div>
-                        <div className="pt-10">
-                            <Image
-                                src="/bicycle.png"
-                                width={80}
-                                height={80}
-                                alt="Picture of the author"
-                            />
+                        <div className='ml-16'>
+                            <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4'>Les moyens de locomotion:</h1>
+                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                <div className='mb-12'>
+                                    <div className="flex items-center">
+                                        <Image
+                                            src="/bicycle.png"
+                                            width={60}
+                                            height={60}
+                                            alt="Picture of the author"
+                                            className='mr-4'
+                                        />
+                                        <div>
+                                            <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'>Le vélo:</h1>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="velo" className="ml-2 text-base sm:text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans <br></br> mon immeuble</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="velo" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="flex items-center">
+                                        <Image
+                                            src="/car (2).png"
+                                            width={60}
+                                            height={60}
+                                            alt="Picture of the author"
+                                            className='mr-4'
+                                        />
+                                        <div>
+                                            <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-2'>La voiture:</h1>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="flex items-center mb-2 mt-4">
+                                            <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                            <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">je veux une place de parking au <br></br>sein de mon immeuble</label>
+                                        </div>
+                                        <div className="flex items-center mb-2 mt-4">
+                                            <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                            <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ça m'est égal</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                            </form>
                         </div>
-                        <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'> On se déplace à vélo?</h1>
-                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                            <div className="flex items-center mb-2 mt-4">
-                                <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="velo" className="ml-2 text-base sm:text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans <br></br> mon immeuble</label>
-                            </div>
-                            <div className="flex items-center mb-2 mt-4">
-                                <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="velo" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
-                            </div>
-                            <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
-                        </form>
                     </>
-                )}
-                {(typeOfproperty === 'appartement' && formContent === "velo") && (
-                    <>
-                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
-                                <li className="step step-primary">Type de bien</li>
-                                <li className="step">Budget</li>
-                                <li className="step">Localisation et environnement</li>
-                                <li className="step">Votre priorité</li>
-                            </ul>
-                        </div>
-                        <div className="pt-10">
-                            <Image
-                                src="/car (2).png"
-                                width={80}
-                                height={80}
-                                alt="Picture of the author"
-                            />
-                        </div>
-                        <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-8'>On se déplace en voiture?</h1>
-                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                            <div className="flex items-center mb-2 mt-4">
-                                <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">je veux une place de parking au <br></br>sein de mon immeuble</label>
-                            </div>
-                            <div className="flex items-center mb-2 mt-4">
-                                <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ça m'est égal</label>
-                            </div>
-                            <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
-                        </form>
-                    </>
-                )}
+                )
+                }
                 {
-                    (typeOfproperty === 'appartement' && formContent === 'parking') && (
+                    (typeOfproperty === 'appartement' && formContent === 'velo') && (
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step">Budget</li>
                                     <li className="step">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
+                            <div className='ml-16'>
                                 <Image
                                     src="/chauffe-eau.png"
-                                    width={80}
-                                    height={80}
+                                    width={60}
+                                    height={60}
                                     alt="Picture of the author"
+                                    className='mr-4'
                                 />
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("chauffage")} id="chauffage-oui-checkbox" type="checkbox" value="chauffage-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="chauffage-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">collectif</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("chauffage")} id="chauffage-non-checkbox" type="checkbox" value="chauffage-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="chauffage-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">individuel</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("chauffage")} id="chauffage-indetermine-checkbox" type="checkbox" value="chauffage-indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="chauffage-indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
+                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("chauffage")} id="chauffage-oui-checkbox" type="checkbox" value="chauffage-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="chauffage-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">collectif</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("chauffage")} id="chauffage-non-checkbox" type="checkbox" value="chauffage-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="chauffage-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">individuel</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
-                            </form>
                         </>
                     )
                 }
@@ -309,6 +352,10 @@ const RealEstateForm = () => {
                                         <input {...register("propertyType")} id="jardin-non-negociable-checkbox" type="checkbox" value="jardin-non-negociable" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="jardin-non-negociable" className="ml-2 text-lg text-gray-900 dark:text-gray-300">sans jardin c'est rédhibitoire</label>
                                     </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="jardin-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="jardin-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
+                                    </div>
                                     <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
                                 </form>
                             </div>
@@ -343,6 +390,10 @@ const RealEstateForm = () => {
                                     <div className="flex items-center mb-2 mt-4">
                                         <input {...register("propertyType")} id="piscine-non-checkbox" type="checkbox" value="piscine-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="piscine-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="piscine-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="piscine-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
                                     </div>
                                     <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
                                 </form>
@@ -455,7 +506,7 @@ const RealEstateForm = () => {
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
-                                    <li className="step">Budget</li>
+                                    <li className="step step-primary">Budget</li>
                                     <li className="step">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
@@ -518,8 +569,11 @@ const RealEstateForm = () => {
                                                 aria-describedby="helper-text-explanation"
                                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="?????? €"
-                                                required
                                             />
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("coupDeCoeur")} id="ecole" type="checkbox" value="coupDeCoeur" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="coupDeCoeur-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">à déterminer</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <button
@@ -636,6 +690,10 @@ const RealEstateForm = () => {
                                                         <input {...register("travauxPasDansBudget")} id="travauxPasDansBudget" type="checkbox" value="travauxPasDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                                         <label htmlFor="travauxPasDansBudget-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
                                                     </div>
+                                                    <div className="flex items-center mb-2 mt-4">
+                                                        <input {...register("travauxPasDansBudget")} id="travauxPasDansBudget" type="checkbox" value="travauxPasDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                        <label htmlFor="travauxPasDansBudget-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">à déterminer</label>
+                                                    </div>
                                                 </div>
                                             </>
                                         )
@@ -656,82 +714,47 @@ const RealEstateForm = () => {
                 {
                     formContent === 'travaux' && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
-                            <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
-                                    <li className="step step-primary">Type de bien</li>
-                                    <li className="step step-primary">Budget</li>
-                                    <li className="step">Localisation et environnement</li>
-                                    <li className="step">Votre priorité</li>
-                                </ul>
-                            </div>
-                            <div className="pt-10">
-                                <Image
-                                    src="/maintenance.png"
-                                    width={80}
-                                    height={80}
-                                    alt="Picture of the author"
-                                />
-                            </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Inclus dans le budget ou pas?</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("travauxDansBudget")} id="travauxDansBudget-checkbox" type="checkbox" value="travauxDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="travauxDansBudget-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("travauxPasDansBudget")} id="travauxPasDansBudget" type="checkbox" value="travauxPasDansBudget" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="travauxPasDansBudget-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
-                            </form>
-                        </>
-                    )
-                }
-                {
-                    formContent === 'travauxDansBudget' && (
-                        <>
                             <>
                                 <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
                                 <div className='hidden sm:block'>
-                                    <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                    <ul className="steps mb-12">
                                         <li className="step step-primary">Type de bien</li>
                                         <li className="step step-primary">Budget</li>
                                         <li className="step step-primary">Localisation et environnement</li>
                                         <li className="step">Votre priorité</li>
                                     </ul>
                                 </div>
-                                <div className="pt-10">
+                                <div className='ml-16'>
                                     <Image
                                         src="/accueil.png"
-                                        width={80}
-                                        height={80}
+                                        width={75}
+                                        height={75}
                                         alt="Picture of the author"
                                     />
+                                    <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>C’est bon, on a défini votre bien idéal. <br></br>Mais il se situe où? </h1>
+                                    <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                        <div className="flex items-center w-12  mb-2 mt-4" style={{ width: '25em' }}>
+                                            <label htmlFor="underline_select" className="sr-only">Votre quartier de rêve</label>
+                                            <select
+                                                {...register("quartier")}
+                                                id="underline_select"
+                                                className="block py-2.5 px-0  w-22 sm:w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+                                            >
+                                                <option>Votre quartier de rêve</option>
+                                                <option value="centre">Montpellier-Centre</option>
+                                                <option value="croix-dargent">Croix-d'Argent</option>
+                                                <option value="cevennes">Les Cévennes</option>
+                                                <option value="mosson">Mosson</option>
+                                                <option value="hopitaux">Hôpitaux-Facultés</option>
+                                                <option value="port-marianne">Port-Marianne</option>
+                                                <option value="arenes">Prés d'Arènes</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                            Suivant
+                                        </button>
+                                    </form>
                                 </div>
-                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>C’est bon, on a défini votre bien idéal. <br></br>Mais il se situe où? </h1>
-                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                    <div className="flex items-center w-12  mb-2 mt-4" style={{ width: '25em' }}>
-                                        <label htmlFor="underline_select" className="sr-only">Votre quartier de rêve</label>
-                                        <select
-                                            {...register("quartier")}
-                                            id="underline_select"
-                                            className="block py-2.5 px-0  w-22 sm:w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
-                                        >
-                                            <option>Votre quartier de rêve</option>
-                                            <option value="centre">Montpellier-Centre</option>
-                                            <option value="croix-dargent">Croix-d'Argent</option>
-                                            <option value="cevennes">Les Cévennes</option>
-                                            <option value="mosson">Mosson</option>
-                                            <option value="hopitaux">Hôpitaux-Facultés</option>
-                                            <option value="port-marianne">Port-Marianne</option>
-                                            <option value="arenes">Prés d'Arènes</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                        Suivant
-                                    </button>
-                                </form>
                             </>
 
                         </>
@@ -742,33 +765,41 @@ const RealEstateForm = () => {
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step step-primary">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
+                            <div className='ml-16'>
                                 <Image
                                     src="/feux-dartifice.png"
-                                    width={80}
-                                    height={80}
+                                    width={75}
+                                    height={75}
                                     alt="Picture of the author"
                                 />
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les services qui doivent être à proximité:</h1>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("servicesDeProximite")} id="ecole" type="checkbox" value="ecole" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="ecole-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">l’école ?</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("servicesDeProximite")} id="tramway" type="checkbox" value="tramway" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="tramway-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">les transports en commun ?</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-5">
+                                        <label className="form-control">
+                                            <div className="label">
+                                                <span className="label-text">autres</span>
+                                            </div>
+                                            <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
+                                        </label>
+                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les services qui doivent être à proximité:</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("servicesDeProximite")} id="ecole" type="checkbox" value="ecole" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="ecole-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">l’école ?</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("servicesDeProximite")} id="tramway" type="checkbox" value="tramway" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="tramway-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">les transports en commun ?</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
-                            </form>
                         </>
                     )
                 }
@@ -777,37 +808,45 @@ const RealEstateForm = () => {
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12" >
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step step-primary">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
+                            <div className='ml-16'>
                                 <Image
                                     src="/feux-dartifice.png"
-                                    width={80}
-                                    height={80}
+                                    width={75}
+                                    height={75}
                                     alt="Picture of the author"
                                 />
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les petits plus à coté:</h1>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("loisirsAproximite")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="parcs-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">parcs ?</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("loisirsAproximite")} id="boutiques" type="checkbox" value="boutiques" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="boutiques-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">boutiques ?</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("loisirsAproximite")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="restaurants/bars-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">restaurants/bars ?</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-5">
+                                        <label className="form-control">
+                                            <div className="label">
+                                                <span className="label-text">autres</span>
+                                            </div>
+                                            <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
+                                        </label>
+                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les petits plus à coté:</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("loisirsAproximite")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="parcs-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">parcs ?</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("loisirsAproximite")} id="boutiques" type="checkbox" value="boutiques" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="boutiques-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">boutiques ?</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("loisirsAproximite")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="restaurants/bars-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">restaurants/bars ?</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
-                            </form>
                         </>
                     )
                 }
@@ -816,20 +855,20 @@ const RealEstateForm = () => {
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step step-primary">Localisation et environnement</li>
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
-
+                            <div className='ml-16'>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Plus généralement, quelle ambiance vous <br></br> parle le plus?</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 ml-16'>Plus généralement, quelle ambiance vous <br></br> parle le plus?</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className='flex flex-row'>
+                                <div className='flex flex-row ml-16'>
                                     <div className="flex flex-col items-center mb-2 mr-4 mt-4">
+                                        <p className='mb-2'>nature</p>
                                         <input {...register("ambiance")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <Image
                                             src="/parc.png"
@@ -839,6 +878,7 @@ const RealEstateForm = () => {
                                         />
                                     </div>
                                     <div className="flex items-center mb-2 mt-4 ml-4 mr-4 flex-col">
+                                        <p className='mb-2'>calme</p>
                                         <input {...register("ambiance")} id="calm" type="checkbox" value="calm" className="w-5 mb-2 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <Image
                                             src="/calme.png"
@@ -848,6 +888,7 @@ const RealEstateForm = () => {
                                         />
                                     </div>
                                     <div className="flex items-center mb-2 mt-4 ml-4 flex-col">
+                                        <p className='mb-2'>festif</p>
                                         <input {...register("ambiance")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <Image
                                             src="/biere.png"
@@ -857,7 +898,7 @@ const RealEstateForm = () => {
                                         />
                                     </div>
                                 </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 ml-16 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
                             </form>
 
                         </>
@@ -868,39 +909,38 @@ const RealEstateForm = () => {
                         <>
                             <h1 className='text-2xl font-bold lg:hidden'>Votre priorité:</h1>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step step-primary">Localisation et environnement</li>
                                     <li className="step step-primary">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
+                            <div className='ml-16'>
                                 <Image
                                     src="/important.png"
-                                    width={80}
-                                    height={80}
+                                    width={75}
+                                    height={75}
                                     alt="Picture of the author"
                                 />
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre priorité: </h1>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                                    <textarea
+                                        {...register("nonNegociable")}
+                                        id="message"
+                                        rows="4"
+                                        className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Ce qui n’est pas négociable...">
+
+                                    </textarea>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre priorité: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <textarea
-                                    {...register("nonNegociable")}
-                                    id="message"
-                                    rows="4"
-                                    className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Ce qui n’est pas négociable...">
-
-                                </textarea>
-                                <button
-                                    type="submit"
-                                    className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Suivant
-                                </button>
-                            </form>
-
                         </>
                     )
                 }
@@ -908,29 +948,29 @@ const RealEstateForm = () => {
                     formContent === 'nonNegociable' && (
                         <>
                             <div className='hidden sm:block'>
-                                <ul className="steps mb-12" style={{ marginLeft: '-14em', marginTop: '-5em', position: 'absolute' }}>
+                                <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
                                     <li className="step step-primary">Budget</li>
                                     <li className="step step-primary">Localisation et environnement</li>
                                     <li className="step step-primary">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className="pt-10">
+                            <div className='ml-16'>
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
+                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
+                                    <input type="text"  {...register("email", { required: true })} placeholder="Email" className="input input-bordered input-info w-full max-w-xs mb-3" />
+                                    <input type="text"  {...register("name", { required: true })} placeholder="Nom prénom" className="input input-bordered input-info w-full max-w-xs mb-3" />
+                                    <div className="mb-6 mt-4">
+                                        <input {...register("donneesPersonnelles", { required: true })} id="donneesPersonnelles" type="checkbox" value="donneesPersonnelles" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="donneesPersonnelles-checkbox" className="ml-2 text-xs text-gray-900 dark:text-gray-300">J'autorise BienAdapté à envoyer mes coordonnées et mon projet d'achat aux agences partenaires qui sont susceptibles d'avoir des biens intéressants. En cochant la case "accepter et valider", j'accepte les conditions générales d'utilisation et la politique de confidentialité de BienAdapté dont j'affirme avoir pris connaissance.</label>
+                                    </div>
+                                    <button
+
+                                        type="submit" className="btn btn-secondary"
+                                    > Envoyer</button>
+
+                                </form>
                             </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <input type="text"  {...register("email", { required: true })} placeholder="Email" className="input input-bordered input-info w-full max-w-xs mb-3" />
-                                <input type="text"  {...register("name", { required: true })} placeholder="Nom prénom" className="input input-bordered input-info w-full max-w-xs mb-3" />
-                                <div className="mb-6 mt-4">
-                                    <input {...register("donneesPersonnelles", { required: true })} id="donneesPersonnelles" type="checkbox" value="donneesPersonnelles" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="donneesPersonnelles-checkbox" className="ml-2 text-xs text-gray-900 dark:text-gray-300">J'autorise BienAdapté à envoyer mes coordonnées et mon projet d'achat aux agences partenaires qui sont susceptibles d'avoir des biens intéressants. En cochant la case "accepter et valider", j'accepte les conditions générales d'utilisation et la politique de confidentialité de BienAdapté dont j'affirme avoir pris connaissance.</label>
-                                </div>
-                                <button
-
-                                    type="submit" className="btn btn-secondary"
-                                > Envoyer</button>
-
-                            </form>
                         </>
                     )
                 }
