@@ -95,7 +95,7 @@ const RealEstateForm = () => {
                 )}
                 {(formContent === 'appartement' || formContent === 'maison') && (
                     <>
-                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                         <div className='hidden sm:block'>
                             <ul className="steps mb-12">
                                 <li className="step step-primary">Type de bien</li>
@@ -104,7 +104,7 @@ const RealEstateForm = () => {
                                 <li className="step">Votre priorité</li>
                             </ul>
                         </div>
-                        <div className='ml-16'>
+                        <div className='sm:ml-16'>
                             <Image
                                 src="/ruler.png"
                                 width={75}
@@ -137,14 +137,8 @@ const RealEstateForm = () => {
                                         required
                                     />
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
-                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                </button>
                             </form>
                         </div>
                     </>
@@ -152,7 +146,7 @@ const RealEstateForm = () => {
                 )}
                 {(formContent === "surface" && typeOfProperty === "maison") && (
                     <>
-                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                         <div className='hidden sm:block'>
                             <ul className="steps mb-12">
                                 <li className="step step-primary">Type de bien</li>
@@ -161,7 +155,7 @@ const RealEstateForm = () => {
                                 <li className="step">Votre priorité</li>
                             </ul>
                         </div>
-                        <div className='ml-16'>
+                        <div className='sm:ml-16'>
                             <Image
                                 src="/feux-dartifice.png"
                                 width={75}
@@ -182,21 +176,15 @@ const RealEstateForm = () => {
                                     <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">hybride</label>
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
-                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                </button>
                             </form>
                         </div>
                     </>
                 )}
                 {(formContent === "surface" && typeOfProperty === "appartement") && (
                     <>
-                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                         <div className='hidden sm:block'>
                             <ul className="steps mb-12">
                                 <li className="step step-primary">Type de bien</li>
@@ -205,7 +193,7 @@ const RealEstateForm = () => {
                                 <li className="step">Votre priorité</li>
                             </ul>
                         </div>
-                        <div className='ml-16'>
+                        <div className='sm:ml-16'>
                             <Image
                                 src="/feux-dartifice.png"
                                 width={75}
@@ -227,21 +215,15 @@ const RealEstateForm = () => {
                                     <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label htmlFor="indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
-                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                </button>
                             </form>
                         </div>
                     </>
                 )}
                 {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
                     <>
-                        <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                        <h1 className='text-2xl underline font-bold lg:hidden'>Type de bien:</h1>
                         <div className='hidden sm:block'>
                             <ul className="steps mb-12" >
                                 <li className="step step-primary">Type de bien</li>
@@ -250,8 +232,8 @@ const RealEstateForm = () => {
                                 <li className="step">Votre priorité</li>
                             </ul>
                         </div>
-                        <div className='ml-16'>
-                            <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4'>Les moyens de locomotion:</h1>
+                        <div className='sm:ml-16'>
+                            <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4 mb-7'>Les moyens de locomotion:</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                 <div className='mb-12'>
                                     <div className="flex items-center">
@@ -299,14 +281,8 @@ const RealEstateForm = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
-                                </div>
+                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                </button>
                             </form>
                         </div>
                     </>
@@ -315,7 +291,7 @@ const RealEstateForm = () => {
                 {
                     (typeOfproperty === 'appartement' && formContent === 'velo') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -324,7 +300,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/chauffe-eau.png"
                                     width={60}
@@ -346,14 +322,8 @@ const RealEstateForm = () => {
                                         <input {...register("chauffage")} id="chauffage-indetermine-checkbox" type="checkbox" value="chauffage-indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="chauffage-indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
                                     </div>
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -363,7 +333,7 @@ const RealEstateForm = () => {
                 {
                     (typeOfproperty === 'maison' && formContent === "propertyAge") && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -372,14 +342,14 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/fleurs.png"
                                     width={75}
                                     height={75}
                                     alt="Picture of the author"
                                 />
-                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le jardin: </h1>
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 mb-7'>Le jardin: </h1>
                                 <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
                                     <div className="flex items-center mb-2 mt-4">
                                         <input {...register("propertyType")} id="jardin-oui-checkbox" type="checkbox" value="jardin-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -397,14 +367,8 @@ const RealEstateForm = () => {
                                         <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="jardin-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="jardin-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
                                     </div>
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -413,7 +377,7 @@ const RealEstateForm = () => {
                 {
                     (typeOfproperty === 'maison' && formContent.slice(0, 6) === 'jardin') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -422,7 +386,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/piscine.png"
                                     width={75}
@@ -443,14 +407,8 @@ const RealEstateForm = () => {
                                         <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="piscine-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="piscine-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
                                     </div>
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -459,7 +417,7 @@ const RealEstateForm = () => {
                 {
                     (formContent === "chauffage" || formContent.slice(0, 7) === 'piscine') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -468,7 +426,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <form onSubmit={handleSubmit(onFormSubmit)} className="mt-6 max-w-sm">
                                     <div className='mb-12'>
                                         <div className="flex items-center">
@@ -541,14 +499,8 @@ const RealEstateForm = () => {
                                                 required
                                             />
                                         </div>
-                                        <div>
-                                            <button
-                                                type="submit"
-                                                className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                            >
-                                                Suivant
-                                            </button>
-                                        </div>
+                                        <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -558,7 +510,7 @@ const RealEstateForm = () => {
                 {
                     (formContent.slice(0, 8) === 'bedrooms' || formContent.slice(0, 8) === 'bathrooms') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb:7'>Budget:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -567,7 +519,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <form onSubmit={handleSubmit(onFormSubmit)} className="mt-6 max-w-sm">
                                     <div className='mb-12'>
                                         <div className="flex items-center">
@@ -632,14 +584,8 @@ const RealEstateForm = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -649,7 +595,7 @@ const RealEstateForm = () => {
                 {
                     (formContent === 'budgetMin') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Budget:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -658,7 +604,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/foudre.png"
                                     width={70}
@@ -675,11 +621,7 @@ const RealEstateForm = () => {
                                         placeholder="Lâchez vous ici...">
                                     </textarea>
                                     <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
+                                        <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
                                         </button>
                                     </div>
                                 </form>
@@ -690,7 +632,7 @@ const RealEstateForm = () => {
                 {
                     (formContent === 'coupDeFoudre') && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Budget:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Budget:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -699,7 +641,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                     <div className='mb-10'>
                                         <div className="flex items-center">
@@ -758,15 +700,8 @@ const RealEstateForm = () => {
                                             </>
                                         )
                                     }
-
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -777,7 +712,7 @@ const RealEstateForm = () => {
                     formContent === 'travaux' && (
                         <>
                             <>
-                                <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                                <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                                 <div className='hidden sm:block'>
                                     <ul className="steps mb-12">
                                         <li className="step step-primary">Type de bien</li>
@@ -786,7 +721,7 @@ const RealEstateForm = () => {
                                         <li className="step">Votre priorité</li>
                                     </ul>
                                 </div>
-                                <div className='ml-16'>
+                                <div className='sm:ml-16'>
                                     <Image
                                         src="/accueil.png"
                                         width={75}
@@ -812,14 +747,8 @@ const RealEstateForm = () => {
                                                 <option value="arenes">Prés d'Arènes</option>
                                             </select>
                                         </div>
-                                        <div>
-                                            <button
-                                                type="submit"
-                                                className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                            >
-                                                Suivant
-                                            </button>
-                                        </div>
+                                        <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                        </button>
                                     </form>
                                 </div>
                             </>
@@ -830,7 +759,7 @@ const RealEstateForm = () => {
                 {
                     formContent === 'quartier' && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -839,7 +768,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/feux-dartifice.png"
                                     width={75}
@@ -864,14 +793,8 @@ const RealEstateForm = () => {
                                             <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
                                         </label>
                                     </div>
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -880,7 +803,7 @@ const RealEstateForm = () => {
                 {
                     formContent === 'servicesDeProximite' && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12" >
                                     <li className="step step-primary">Type de bien</li>
@@ -889,7 +812,7 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/feux-dartifice.png"
                                     width={75}
@@ -918,14 +841,8 @@ const RealEstateForm = () => {
                                             <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
                                         </label>
                                     </div>
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
-                                    </div>
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
                                 </form>
                             </div>
                         </>
@@ -934,7 +851,7 @@ const RealEstateForm = () => {
                 {
                     formContent === 'loisirsAproximite' && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Localisation/environnement:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -943,11 +860,9 @@ const RealEstateForm = () => {
                                     <li className="step">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
-                            </div>
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 ml-16'>Plus généralement, quelle ambiance vous <br></br> parle le plus?</h1>
+                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 sm:ml-16'>Plus généralement, quelle ambiance vous parle le plus?</h1>
                             <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className='flex flex-row ml-16'>
+                                <div className='flex flex-row sm:ml-16'>
                                     <div className="flex flex-col items-center mb-2 mr-4 mt-4">
                                         <p className='mb-2'>nature</p>
                                         <input {...register("ambiance")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -979,23 +894,16 @@ const RealEstateForm = () => {
                                         />
                                     </div>
                                 </div>
-                                <div>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
-                                </div>
+                                <button type="submit" className="sm:ml-16 py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                </button>
                             </form>
-
                         </>
                     )
                 }
                 {
                     formContent === 'ambiance' && (
                         <>
-                            <h1 className='text-2xl font-bold lg:hidden'>Votre priorité:</h1>
+                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Votre priorité:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -1004,7 +912,7 @@ const RealEstateForm = () => {
                                     <li className="step step-primary">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
+                            <div className='sm:ml-16'>
                                 <Image
                                     src="/important.png"
                                     width={75}
@@ -1021,11 +929,7 @@ const RealEstateForm = () => {
                                         placeholder="Ce qui n’est pas négociable...">
 
                                     </textarea>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
+                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
                                     </button>
                                 </form>
                             </div>
@@ -1043,8 +947,8 @@ const RealEstateForm = () => {
                                     <li className="step step-primary">Votre priorité</li>
                                 </ul>
                             </div>
-                            <div className='ml-16'>
-                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
+                            <div className='sm:ml-16'>
+                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 mb-7'>Et pour terminer, merci de communiquer vos coordonnées: </h1>
                                 <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
                                     <input type="text"  {...register("email", { required: true })} placeholder="Email" className="input input-bordered input-info w-full max-w-xs mb-3" />
                                     <input type="text"  {...register("name", { required: true })} placeholder="Nom prénom" className="input input-bordered input-info w-full max-w-xs mb-3" />
