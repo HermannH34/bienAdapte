@@ -9,6 +9,7 @@ const RealEstateForm = () => {
     const [formContent, setFormContent] = useState('initial');
     const [typeOfproperty, setTypeOfProperty] = useState('');
     const [isMasked, setIsMasked] = useState(true);
+    const [pastElement, setPastElement] = useState(['initial']);
 
     let typeOfProperty = '';
 
@@ -18,9 +19,9 @@ const RealEstateForm = () => {
         typeOfProperty = 'maison';
     }
 
+    console.log("formContent :", formContent);
 
     const onFormSubmit = data => {
-        console.log("Data :", data);
         window.scrollTo({ top: 0, behavior: 'smooth' });
         if (formContent === "appartement" || formContent === "maison") {
             setTypeOfProperty(formContent);
@@ -33,11 +34,21 @@ const RealEstateForm = () => {
             setFormContent(formValue);
         }
 
+
         reset();
     };
 
     const maskEvent = () => {
         setIsMasked(!isMasked);
+    }
+
+    const handlePastButton = (event) => {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setFormContent(pastElement[pastElement.length - 1]);
+
+        setPastElement(pastElement.slice(0, -1));
+
     }
 
 
@@ -48,7 +59,7 @@ const RealEstateForm = () => {
                 {formContent === 'initial' && (
                     <>
                         <div>
-                            <h1 className='text-2xl font-bold lg:hidden'>Type de bien:</h1>
+                            <h1 className='text-2xl font-bold lg:hidden underline mb-7'>Type de bien:</h1>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
                                     <li className="step step-primary">Type de bien</li>
@@ -59,7 +70,7 @@ const RealEstateForm = () => {
                             </div>
                         </div>
 
-                        <div className='ml-16'>
+                        <div className='sm:ml-16'>
                             <Image
                                 src="/cle.png"
                                 width={75}
@@ -126,12 +137,14 @@ const RealEstateForm = () => {
                                         required
                                     />
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="py-2.5 px-5 mt-3 mb-2 mt-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                >
-                                    Suivant
-                                </button>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </>
@@ -169,7 +182,14 @@ const RealEstateForm = () => {
                                     <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">hybride</label>
                                 </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </>
@@ -207,7 +227,14 @@ const RealEstateForm = () => {
                                     <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label htmlFor="indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
                                 </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </>
@@ -272,7 +299,14 @@ const RealEstateForm = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </>
@@ -312,7 +346,14 @@ const RealEstateForm = () => {
                                         <input {...register("chauffage")} id="chauffage-indetermine-checkbox" type="checkbox" value="chauffage-indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="chauffage-indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
                                     </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -356,7 +397,14 @@ const RealEstateForm = () => {
                                         <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="jardin-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="jardin-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
                                     </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -395,7 +443,14 @@ const RealEstateForm = () => {
                                         <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="piscine-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="piscine-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
                                     </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -486,13 +541,14 @@ const RealEstateForm = () => {
                                                 required
                                             />
                                         </div>
-
-                                        <button
-                                            type="submit"
-                                            className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                        >
-                                            Suivant
-                                        </button>
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            >
+                                                Suivant
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -576,12 +632,14 @@ const RealEstateForm = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -616,12 +674,14 @@ const RealEstateForm = () => {
                                         className="block p-2.5 w-22 sm:w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Lâchez vous ici...">
                                     </textarea>
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -699,12 +759,14 @@ const RealEstateForm = () => {
                                         )
                                     }
 
-                                    <button
-                                        type="submit"
-                                        className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                                    >
-                                        Suivant
-                                    </button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -750,9 +812,14 @@ const RealEstateForm = () => {
                                                 <option value="arenes">Prés d'Arènes</option>
                                             </select>
                                         </div>
-                                        <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                            Suivant
-                                        </button>
+                                        <div>
+                                            <button
+                                                type="submit"
+                                                className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                            >
+                                                Suivant
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </>
@@ -792,12 +859,19 @@ const RealEstateForm = () => {
                                     <div className="flex items-center mb-2 mt-5">
                                         <label className="form-control">
                                             <div className="label">
-                                                <span className="label-text">autres</span>
+                                                <span className="label-text">autres:</span>
                                             </div>
                                             <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
                                         </label>
                                     </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -839,12 +913,19 @@ const RealEstateForm = () => {
                                     <div className="flex items-center mb-2 mt-5">
                                         <label className="form-control">
                                             <div className="label">
-                                                <span className="label-text">autres</span>
+                                                <span className="label-text">autres:</span>
                                             </div>
                                             <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
                                         </label>
                                     </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-3 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                    <div>
+                                        <button
+                                            type="submit"
+                                            className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                        >
+                                            Suivant
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </>
@@ -872,8 +953,8 @@ const RealEstateForm = () => {
                                         <input {...register("ambiance")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <Image
                                             src="/parc.png"
-                                            width={80}
-                                            height={80}
+                                            width={75}
+                                            height={75}
                                             alt="parcs"
                                         />
                                     </div>
@@ -882,8 +963,8 @@ const RealEstateForm = () => {
                                         <input {...register("ambiance")} id="calm" type="checkbox" value="calm" className="w-5 mb-2 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <Image
                                             src="/calme.png"
-                                            width={80}
-                                            height={80}
+                                            width={75}
+                                            height={75}
                                             alt="calm"
                                         />
                                     </div>
@@ -892,13 +973,20 @@ const RealEstateForm = () => {
                                         <input {...register("ambiance")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <Image
                                             src="/biere.png"
-                                            width={80}
-                                            height={80}
+                                            width={75}
+                                            height={75}
                                             alt="restaurants/bars"
                                         />
                                     </div>
                                 </div>
-                                <button type="submit" className="py-2.5 px-5 mt-3 mb-2 ml-16 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant</button>
+                                <div>
+                                    <button
+                                        type="submit"
+                                        className="py-2.5 px-5 mt-3 mb-2 ml-6 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                    >
+                                        Suivant
+                                    </button>
+                                </div>
                             </form>
 
                         </>
