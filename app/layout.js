@@ -7,12 +7,16 @@ import "./globals.css";
 
 const font = Inter({ subsets: ["latin"] });
 
+
+
 export const viewport = {
-  // Will use the primary color of your theme to show a nice theme color in the URL bar of supported browsers
   themeColor: config.colors.main,
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: "no"
 };
+
 
 // This adds default SEO tags to all pages in our app.
 // You can override them in each page passing params to getSOTags() function.
@@ -24,7 +28,6 @@ export default function RootLayout({ children }) {
       {config.domainName && (
         <head>
           <PlausibleProvider domain={config.domainName} />
-          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         </head>
       )}
       <body>
