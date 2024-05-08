@@ -21,10 +21,10 @@ export const metadata = getSEOTags();
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme={config.colors.theme} className={font.className}>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
       {config.domainName && (
         <head>
           <PlausibleProvider domain={config.domainName} />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         </head>
       )}
       <body>
