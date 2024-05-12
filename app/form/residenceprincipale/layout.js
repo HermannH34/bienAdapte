@@ -9,10 +9,26 @@ export default async function LayoutBlog({ children }) {
     <HeaderForm />
    </Suspense>
 
-   <main className="mb-20 pt-12">{children}</main>
-   <Footer />
+   <main className="sm:min-h-screen pt-12">{children}</main>
 
-   <div className="bg-base-200 sm:h-12 h-24" />
+   <div className="sm:h-12 h-18" />
+
+   <Footer />
   </div>
  );
 }
+
+// export default async function LayoutBlog({ children }) {
+//  return (
+//   <div>
+//    <Suspense>
+//     <HeaderForm />
+//    </Suspense>
+
+//    <main className="mb-20 pt-12">{children}</main>
+//    <Footer />
+
+//    <div className="bg-base-200 sm:h-12 h-24" />
+//   </div>
+//  );
+// }
