@@ -2,7 +2,7 @@
 import Image from "next/image";
 import logo from "@/app/bienAdapte.png";
 import config from "@/config";
-
+import Link from "next/link";
 
 const HeaderForm = () => {
 
@@ -19,7 +19,9 @@ const HeaderForm = () => {
      height={30}
     />
    </div>
-   <button className="btn mr-4">A propos</button>
+   <Link href="/about">
+    <button className="btn mr-4">A propos</button>
+   </Link>
   </div>
  );
 };
