@@ -7,7 +7,7 @@ export default async function LayoutForm({ children }) {
   <div>
    <HeaderForm />
 
-   <main className="mb-23 pb-14 pt-12">{children}</main>
+   <main className="mb-23 pb-16 pt-12">{children}</main>
 
    <Footer />
    <div className="bg-base-200">
