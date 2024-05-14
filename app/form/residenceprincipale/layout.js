@@ -1,34 +1,24 @@
 import { Suspense } from "react";
-import HeaderForm from "../_assets/components/headerForm";
+import HeaderForm from "../_assets/components/HeaderForm";
 import Footer from "@/components/Footer";
 
-export default async function LayoutBlog({ children }) {
+export default async function LayoutForm({ children }) {
  return (
   <div>
-   <Suspense>
-    <HeaderForm />
-   </Suspense>
+   <HeaderForm />
 
-   <main className="sm:min-h-screen pt-12">{children}</main>
-
-   <div className="sm:h-12 h-18" />
+   <main className="mb-23 pb-6 pt-12">{children}</main>
 
    <Footer />
+   <div className="bg-base-200">
+   </div>
+   <div className="bg-base-200 h-20">
+   </div>
+   <div className="bg-base-200 h-20">
+   </div>
+   <div className="bg-base-200 h-50">
+   </div>
   </div>
+
  );
 }
-
-// export default async function LayoutBlog({ children }) {
-//  return (
-//   <div>
-//    <Suspense>
-//     <HeaderForm />
-//    </Suspense>
-
-//    <main className="mb-20 pt-12">{children}</main>
-//    <Footer />
-
-//    <div className="bg-base-200 sm:h-12 h-24" />
-//   </div>
-//  );
-// }
