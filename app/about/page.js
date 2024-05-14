@@ -52,11 +52,10 @@ Adhérer à BienAdapté, c’est inverser la tendance, c’est faire de votre re
 
 L’équipe BienAdapté.
 
-PS: si vous avez une question/réclamation, vous pouvez nous écrire à l’adresse suivante:`}  <a href="mailto:bien.adapte@outlook.fr" className="font-bold">bien.adapte@outlook.fr</a>
-
+PS: si vous avez une question/réclamation, vous pouvez nous écrire à l’adresse suivante:`}  <span className="font-bold">bien.adapte@outlook.fr</span>
     </pre>
    </div>
-  </main>
+  </main >
  );
 };
 
