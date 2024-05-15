@@ -34,7 +34,7 @@ const config = {
         priceAnchor: "",
         features: [
           {
-            name: "1 contact: 100 euros",
+            name: "1 opportunité: 100 euros",
           },
           // { name: "User oauth" },
           // { name: "Database" },
@@ -54,7 +54,7 @@ const config = {
         priceAnchor: "",
         features: [
           {
-            name: "10 contacts: 800 euros",
+            name: "10 opportunités: 800 euros",
           },
           // { name: "User oauth" },
           // { name: "Database" },
@@ -77,9 +77,9 @@ const config = {
     // REQUIRED — Email 'From' field to be used when sending magic login links
     fromNoReply: `ShipFast <noreply@mg.shipfa.st>`,
     // REQUIRED — Email 'From' field to be used when sending other emails, like abandoned carts, updates etc..
-    fromAdmin: `Marc at ShipFast <marc@mg.shipfa.st>`,
+    fromAdmin: `Marc at ShipFast <bien.adapte@outlook.fr>`,
     // Email shown to customer if need support. Leave empty if not needed => if empty, set up Crisp above, otherwise you won't be able to offer customer support."
-    supportEmail: "marc@mg.shipfa.st",
+    supportEmail: "bien.adapte@outlook.fr",
     // When someone replies to supportEmail sent by the app, forward it to the email below (otherwise it's lost). If you set supportEmail to empty, this will be ignored.
     forwardRepliesTo: "marc.louvion@gmail.com",
   },

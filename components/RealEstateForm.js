@@ -954,7 +954,7 @@ const RealEstateForm = () => {
                                     <input type="text"  {...register("name", { required: true })} placeholder="Nom prénom" className="input input-bordered input-info w-full max-w-xs mb-3" />
                                     <div className="mb-6 mt-4">
                                         <input {...register("donneesPersonnelles", { required: true })} id="donneesPersonnelles" type="checkbox" value="donneesPersonnelles" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="donneesPersonnelles-checkbox" className="ml-2 text-xs text-gray-900 dark:text-gray-300">J'autorise BienAdapté à envoyer mes coordonnées et mon projet d'achat aux agences partenaires qui sont susceptibles d'avoir des biens intéressants. En cochant la case "accepter et valider", j'accepte les conditions générales d'utilisation et la politique de confidentialité de BienAdapté dont j'affirme avoir pris connaissance.</label>
+                                        <label htmlFor="donneesPersonnelles-checkbox" className="ml-2 text-xs text-gray-900 dark:text-gray-300">J'autorise BienAdapté à envoyer mes coordonnées et mon projet d'achat aux agences partenaires qui sont susceptibles d'avoir des biens intéressants, et ce, de manière rémunérée ou non. En cochant la case "accepter et valider", j'accepte les conditions générales d'utilisation et la politique de confidentialité de BienAdapté, dont j'affirme avoir pris connaissance</label>
                                     </div>
                                     <button
 

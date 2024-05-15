@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import HeaderForm from "../_assets/components/HeaderForm";
-import Footer from "@/components/Footer";
+import FooterForm from "../_assets/components/FooterForm";
 
 export default async function LayoutForm({ children }) {
  return (
@@ -9,7 +9,7 @@ export default async function LayoutForm({ children }) {
 
    <main className="mb-23 pb-16 pt-12">{children}</main>
 
-   <Footer />
+   <FooterForm />
    <div className="bg-base-200">
    </div>
    <div className="bg-base-200 h-20">
