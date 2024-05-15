@@ -174,7 +174,7 @@ const Media = ({ feature }) => {
       <Image
         src={path}
         alt={alt}
-        className={`${style} object-cover object-center`}
+        className={`${style} object-cover object-center `}
         width={size.width}
         height={size.height}
       />
@@ -203,20 +203,11 @@ const FeaturesAccordion = () => {
         </h2>
 
         <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-center">
-          <div className="pl-20 pr-20 grid grid-cols-1sm:gap-12 lg:grid-cols-1">
-            {/* <ul className="w-full">
-              {features.map((feature, i) => (
-                <Item
-                  key={feature.title}
-                  index={i}
-                  feature={feature}
-                  isOpen={featureSelected === i}
-                  setFeatureSelected={() => setFeatureSelected(i)}
-                />
-              ))}
-            </ul> */}
-
-            < Media feature={features[featureSelected]} key={featureSelected} />
+          <div className="hidden sm:block">
+            <div className="pl-20 pr-20 grid grid-cols-1 sm:gap-12 lg:grid-cols-1">
+              {/* Contenu à afficher uniquement sur les écrans de taille medium (sm) et plus grands */}
+              <Media feature={features[featureSelected]} key={featureSelected} />
+            </div>
           </div>
         </div>
 
