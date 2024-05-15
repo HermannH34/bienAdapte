@@ -14,7 +14,7 @@ const faqList = [
     question: "C’est quoi le deal?",
     answer: (
       <p>
-        Vous recevez les demandes des acquéreurs. Si vous avez le bien qui convient, on vous met en contact avec l’acquéreur pour 10 euros. Après, c’est vous qui gérez. Pas plus. Attention, on a une obligation de moyen, pas de résultat. Normalement, si l’acquéreur a bien défini son projet et que vous avez en mandat le bien qui convient, c’est tout bon.
+        Vous recevez les demandes des acquéreurs. Si vous avez le bien qui convient, on vous met en contact avec l’acquéreur pour 100 euros. Après, c’est vous qui gérez. Pas plus. Attention, on a une obligation de moyen, pas de résultat. Normalement, si l’acquéreur a bien défini son projet et que vous avez en mandat le bien qui convient, c’est tout bon.
       </p>
     ),
   },
