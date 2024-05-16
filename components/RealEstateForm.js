@@ -6,49 +6,41 @@ import './style.css';
 
 const RealEstateForm = () => {
     const { register, handleSubmit, reset } = useForm();
-    const [formContent, setFormContent] = useState('initial');
-    const [typeOfproperty, setTypeOfProperty] = useState('');
+    const [typeOfProperty, setTypeOfProperty] = useState('');
     const [isMasked, setIsMasked] = useState(true);
-    const [pastElement, setPastElement] = useState(['initial']);
+    const [nextButton, setNextButton] = useState(0);
 
-    let typeOfProperty = '';
-
-    if (typeOfproperty === 'appartement') {
-        typeOfProperty = 'appartement'
-    } else {
-        typeOfProperty = 'maison';
-    }
-
-    console.log("formContent :", formContent);
 
     const onFormSubmit = data => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (formContent === "appartement" || formContent === "maison") {
-            setTypeOfProperty(formContent);
+
+        console.log('data', data)
+
+        setNextButton(nextButton + 1);
+
+        let formValueForPropertyType
+        if (nextButton === 0) {
+            formValueForPropertyType = data.propertyType[0]
         }
 
-        if (Array.isArray(data.propertyType)) {
-            setFormContent(data.propertyType[0]);
-        } else {
-            const formValue = Object.keys(data)[0]
-            setFormContent(formValue);
+        if (formValueForPropertyType === "maison" || formValueForPropertyType === "appartement") {
+            setTypeOfProperty(formValueForPropertyType);
         }
 
 
         reset();
     };
 
-    const maskEvent = () => {
-        setIsMasked(!isMasked);
+    const pastStep = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setNextButton(nextButton => nextButton - 1)
+
+        reset()
     }
 
-    const handlePastButton = (event) => {
-        event.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setFormContent(pastElement[pastElement.length - 1]);
-
-        setPastElement(pastElement.slice(0, -1));
-
+    const maskEvent = () => {
+        setIsMasked(!isMasked);
     }
 
 
@@ -56,366 +48,278 @@ const RealEstateForm = () => {
         <>
             <div className="w-1/2 mx-auto"
             >
-                {formContent === 'initial' && (
-                    <>
-                        <div>
-                            <h1 className='text-2xl font-bold lg:hidden underline mb-7'>Type de bien:</h1>
-                            <div className='hidden sm:block'>
-                                <ul className="steps mb-12">
-                                    <li className="step step-primary">Type de bien</li>
-                                    <li className="step">Budget</li>
-                                    <li className="step">Localisation et environnement</li>
-                                    <li className="step">Votre priorité</li>
-                                </ul>
-                            </div>
+                <>
+                    <div>
+                        <h1 className='text-2xl font-bold lg:hidden underline mb-7'>Type de bien:</h1>
+                        <div className='hidden sm:block'>
+                            <ul className="steps mb-12">
+                                <li className="step step-primary">Type de bien</li>
+                                <li className="step">Budget</li>
+                                <li className="step">Localisation et environnement</li>
+                                <li className="step">Votre priorité</li>
+                            </ul>
                         </div>
+                    </div>
 
-                        <div className='sm:ml-16'>
-                            <Image
-                                src="/cle.png"
-                                width={75}
-                                height={75}
-                                alt="Picture of the author"
-                            />
-                            <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="maison-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">une jolie maison</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">un bel appartement</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                </button>
-                            </form>
-                        </div>
-                    </>
-                )}
-                {(formContent === 'appartement' || formContent === 'maison') && (
-                    <>
-                        <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12">
-                                <li className="step step-primary">Type de bien</li>
-                                <li className="step">Budget</li>
-                                <li className="step">Localisation et environnement</li>
-                                <li className="step">Votre priorité</li>
-                            </ul>
-                        </div>
-                        <div className='sm:ml-16'>
-                            <Image
-                                src="/ruler.png"
-                                width={75}
-                                height={75}
-                                alt="Picture of the author"
-                            />
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8 max-w-sm">
-                                <div className='mb-2'>
-                                    <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
-                                    <input
-                                        {...register("surface")}
-                                        type="number"
-                                        id="number-input"
-                                        aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="37 m2"
-                                        required
+                    <div className='sm:ml-16'>
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                            {nextButton === 0 && (
+                                <>
+                                    <Image
+                                        src="/cle.png"
+                                        width={75}
+                                        height={75}
+                                        alt="Picture of the author"
                                     />
-                                </div>
-                                <div>
-                                    <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
-                                    <input
-                                        {...register("surface")}
-                                        type="number"
-                                        id="number-input"
-                                        aria-describedby="helper-text-explanation"
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="300 m2"
-                                        required
-                                    />
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                </button>
-                            </form>
-                        </div>
-                    </>
-
-                )}
-                {(formContent === "surface" && typeOfProperty === "maison") && (
-                    <>
-                        <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12">
-                                <li className="step step-primary">Type de bien</li>
-                                <li className="step">Budget</li>
-                                <li className="step">Localisation et environnement</li>
-                                <li className="step">Votre priorité</li>
-                            </ul>
-                        </div>
-                        <div className='sm:ml-16'>
-                            <Image
-                                src="/feux-dartifice.png"
-                                width={75}
-                                height={75}
-                                alt="Picture of the author"
-                            />
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>On parle d’une maison: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">traditionnelle</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">hybride</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                </button>
-                            </form>
-                        </div>
-                    </>
-                )}
-                {(formContent === "surface" && typeOfProperty === "appartement") && (
-                    <>
-                        <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12">
-                                <li className="step step-primary">Type de bien</li>
-                                <li className="step">Budget</li>
-                                <li className="step">Localisation et environnement</li>
-                                <li className="step">Votre priorité</li>
-                            </ul>
-                        </div>
-                        <div className='sm:ml-16'>
-                            <Image
-                                src="/feux-dartifice.png"
-                                width={75}
-                                height={75}
-                                alt="Picture of the author"
-                            />
-                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
-                                Un appartement dans un bâtiment: </h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ancien</label>
-                                </div>
-                                <div className="flex items-center mb-2 mt-4">
-                                    <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                </button>
-                            </form>
-                        </div>
-                    </>
-                )}
-                {(typeOfproperty === 'appartement' && formContent === "propertyAge") && (
-                    <>
-                        <h1 className='text-2xl underline font-bold lg:hidden'>Type de bien:</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12" >
-                                <li className="step step-primary">Type de bien</li>
-                                <li className="step">Budget</li>
-                                <li className="step">Localisation et environnement</li>
-                                <li className="step">Votre priorité</li>
-                            </ul>
-                        </div>
-                        <div className='sm:ml-16'>
-                            <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4 mb-7'>Les moyens de locomotion:</h1>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                <div className='mb-12'>
-                                    <div className="flex items-center">
-                                        <Image
-                                            src="/bicycle.png"
-                                            width={60}
-                                            height={60}
-                                            alt="Picture of the author"
-                                            className='mr-4'
-                                        />
-                                        <div>
-                                            <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'>Le vélo:</h1>
-                                        </div>
+                                    <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="maison-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">une jolie maison</label>
                                     </div>
                                     <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="velo" className="ml-2 text-base sm:text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans <br></br> mon immeuble</label>
+                                        <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">un bel appartement</label>
                                     </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="velo" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="flex items-center">
-                                        <Image
-                                            src="/car (2).png"
-                                            width={60}
-                                            height={60}
-                                            alt="Picture of the author"
-                                            className='mr-4'
+                                </>
+                            )}
+                            {(nextButton === 1) && (
+                                <>
+
+                                    <Image
+                                        src="/ruler.png"
+                                        width={75}
+                                        height={75}
+                                        alt="Picture of the author"
+                                    />
+                                    <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8'>Surface minimum et maximum: </h1>
+                                    <div className='mb-2'>
+                                        <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
+                                        <input
+                                            {...register("surface")}
+                                            type="number"
+                                            id="number-input"
+                                            aria-describedby="helper-text-explanation"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="37 m2"
+                                            required
                                         />
-                                        <div>
-                                            <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-2'>La voiture:</h1>
-                                        </div>
                                     </div>
                                     <div>
-                                        <div className="flex items-center mb-2 mt-4">
-                                            <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                            <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">je veux une place de parking au <br></br>sein de mon immeuble</label>
-                                        </div>
-                                        <div className="flex items-center mb-2 mt-4">
-                                            <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                            <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ça m'est égal</label>
-                                        </div>
+                                        <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
+                                        <input
+                                            {...register("surface")}
+                                            type="number"
+                                            id="number-input"
+                                            aria-describedby="helper-text-explanation"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-22 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="300 m2"
+                                            required
+                                        />
                                     </div>
-                                </div>
-                                <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                </button>
-                            </form>
-                        </div>
-                    </>
-                )
-                }
-                {
-                    (typeOfproperty === 'appartement' && formContent === 'velo') && (
-                        <>
-                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
-                            <div className='hidden sm:block'>
-                                <ul className="steps mb-12">
-                                    <li className="step step-primary">Type de bien</li>
-                                    <li className="step">Budget</li>
-                                    <li className="step">Localisation et environnement</li>
-                                    <li className="step">Votre priorité</li>
-                                </ul>
-                            </div>
-                            <div className='sm:ml-16'>
-                                <Image
-                                    src="/chauffe-eau.png"
-                                    width={60}
-                                    height={60}
-                                    alt="Picture of the author"
-                                    className='mr-4'
-                                />
-                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
-                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("chauffage")} id="chauffage-oui-checkbox" type="checkbox" value="chauffage-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="chauffage-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">collectif</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("chauffage")} id="chauffage-non-checkbox" type="checkbox" value="chauffage-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="chauffage-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">individuel</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("chauffage")} id="chauffage-indetermine-checkbox" type="checkbox" value="chauffage-indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="chauffage-indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
-                                    </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                    </button>
-                                </form>
-                            </div>
-                        </>
-                    )
-                }
+                                </>
 
+                            )}
+                            {(nextButton === 2 && typeOfProperty === "maison") && (
+                                <>
+                                    <div className='sm:ml-16'>
+                                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
+                                            <Image
+                                                src="/feux-dartifice.png"
+                                                width={75}
+                                                height={75}
+                                                alt="Picture of the author"
+                                            />
+                                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>On parle d’une maison: </h1>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="age" className="ml-2 text-lg text-gray-900 dark:text-gray-300">traditionnelle</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">hybride</label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </>
+                            )}
+                            {(nextButton === 2 && typeOfProperty === "appartement") && (
+                                <>
+                                    <Image
+                                        src="/feux-dartifice.png"
+                                        width={75}
+                                        height={75}
+                                        alt="Picture of the author"
+                                    />
+                                    <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
+                                        Un appartement dans un bâtiment: </h1>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="typique" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="typique" className="ml-2 text-lg text-gray-900 dark:text-gray-300">moderne</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="hybride" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="hybride" className="ml-2 text-lg text-gray-900 dark:text-gray-300">ancien</label>
+                                    </div>
+                                    <div className="flex items-center mb-2 mt-4">
+                                        <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <label htmlFor="indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
+                                    </div>
+                                </>
+                            )}
+                            {(typeOfProperty === 'appartement' && nextButton === 3) && (
+                                <>
+
+                                    <div className='sm:ml-16'>
+                                        <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4 mb-7'>Les moyens de locomotion:</h1>
+                                        <div className='mb-12'>
+                                            <div className="flex items-center">
+                                                <Image
+                                                    src="/bicycle.png"
+                                                    width={60}
+                                                    height={60}
+                                                    alt="Picture of the author"
+                                                    className='mr-4'
+                                                />
+                                                <div>
+                                                    <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'>Le vélo:</h1>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="velo" className="ml-2 text-base sm:text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans <br></br> mon immeuble</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="velo" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="flex items-center">
+                                                <Image
+                                                    src="/car (2).png"
+                                                    width={60}
+                                                    height={60}
+                                                    alt="Picture of the author"
+                                                    className='mr-4'
+                                                />
+                                                <div>
+                                                    <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-2'>La voiture:</h1>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="flex items-center mb-2 mt-4">
+                                                    <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                    <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">je veux une place de parking au <br></br>sein de mon immeuble</label>
+                                                </div>
+                                                <div className="flex items-center mb-2 mt-4">
+                                                    <input {...register("parking")} id="parking-checkbox" type="checkbox" value="parking" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                    <label htmlFor="parking" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ça m'est égal</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                            {
+                                (typeOfProperty === 'appartement' && nextButton === 4) && (
+                                    <>
+                                        <div className='sm:ml-16'>
+                                            <Image
+                                                src="/chauffe-eau.png"
+                                                width={60}
+                                                height={60}
+                                                alt="Picture of the author"
+                                                className='mr-4'
+                                            />
+                                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Le chauffage:</h1>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("chauffage")} id="chauffage-oui-checkbox" type="checkbox" value="chauffage-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="chauffage-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">collectif</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("chauffage")} id="chauffage-non-checkbox" type="checkbox" value="chauffage-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="chauffage-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">individuel</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("chauffage")} id="chauffage-indetermine-checkbox" type="checkbox" value="chauffage-indetermine" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="chauffage-indetermine" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je ne sais pas</label>
+                                            </div>
+
+                                        </div>
+                                    </>
+                                )
+                            }
+                            {
+                                (typeOfProperty === 'maison' && nextButton === 3) && (
+                                    <>
+                                        <div className='sm:ml-16'>
+                                            <Image
+                                                src="/fleurs.png"
+                                                width={75}
+                                                height={75}
+                                                alt="Picture of the author"
+                                            />
+                                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 mb-7'>Le jardin: </h1>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("garden")} id="jardin-oui-checkbox" type="checkbox" value="jardin-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="jardin-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("garden")} id="jardin-non-checkbox" type="checkbox" value="jardin-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="jardin-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("garden")} id="jardin-non-negociable-checkbox" type="checkbox" value="jardin-non-negociable" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="jardin-non-negociable" className="ml-2 text-lg text-gray-900 dark:text-gray-300">sans jardin c'est rédhibitoire</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("garden")} id="jardin-pas-davis-checkbox" type="checkbox" value="jardin-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="jardin-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
+                                            </div>
+                                            <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                            </button>
+                                        </div>
+                                    </>
+                                )
+                            }
+                            {
+                                (typeOfProperty === 'maison' && nextButton === 4) && (
+                                    <>
+                                        <div className='sm:ml-16'>
+                                            <Image
+                                                src="/piscine.png"
+                                                width={75}
+                                                height={75}
+                                                alt="Picture of the author"
+                                            />
+                                            <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et on va plus loin... une piscine ?</h1>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("swimmingPool")} id="piscine-oui-checkbox" type="checkbox" value="piscine-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="piscine-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("swimmingPool")} id="piscine-non-checkbox" type="checkbox" value="piscine-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="piscine-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
+                                            </div>
+                                            <div className="flex items-center mb-2 mt-4">
+                                                <input {...register("swimmingPool")} id="jardin-pas-davis-checkbox" type="checkbox" value="piscine-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                                <label htmlFor="piscine-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+                            }
+                            <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                            </button>
+                        </form>
+                    </div>
+                </>
                 {
-                    (typeOfproperty === 'maison' && formContent === "propertyAge") && (
-                        <>
-                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
-                            <div className='hidden sm:block'>
-                                <ul className="steps mb-12">
-                                    <li className="step step-primary">Type de bien</li>
-                                    <li className="step">Budget</li>
-                                    <li className="step">Localisation et environnement</li>
-                                    <li className="step">Votre priorité</li>
-                                </ul>
-                            </div>
-                            <div className='sm:ml-16'>
-                                <Image
-                                    src="/fleurs.png"
-                                    width={75}
-                                    height={75}
-                                    alt="Picture of the author"
-                                />
-                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4 mb-7'>Le jardin: </h1>
-                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="jardin-oui-checkbox" type="checkbox" value="jardin-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="jardin-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="jardin-non-checkbox" type="checkbox" value="jardin-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="jardin-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="jardin-non-negociable-checkbox" type="checkbox" value="jardin-non-negociable" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="jardin-non-negociable" className="ml-2 text-lg text-gray-900 dark:text-gray-300">sans jardin c'est rédhibitoire</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="jardin-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="jardin-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
-                                    </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                    </button>
-                                </form>
-                            </div>
-                        </>
-                    )
-                }
-                {
-                    (typeOfproperty === 'maison' && formContent.slice(0, 6) === 'jardin') && (
-                        <>
-                            <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
-                            <div className='hidden sm:block'>
-                                <ul className="steps mb-12">
-                                    <li className="step step-primary">Type de bien</li>
-                                    <li className="step">Budget</li>
-                                    <li className="step">Localisation et environnement</li>
-                                    <li className="step">Votre priorité</li>
-                                </ul>
-                            </div>
-                            <div className='sm:ml-16'>
-                                <Image
-                                    src="/piscine.png"
-                                    width={75}
-                                    height={75}
-                                    alt="Picture of the author"
-                                />
-                                <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et on va plus loin... une piscine ?</h1>
-                                <form onSubmit={handleSubmit(onFormSubmit)} className="mt-8">
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="piscine-oui-checkbox" type="checkbox" value="piscine-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="piscine-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Oui</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="piscine-non-checkbox" type="checkbox" value="piscine-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="piscine-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">Non</label>
-                                    </div>
-                                    <div className="flex items-center mb-2 mt-4">
-                                        <input {...register("propertyType")} id="jardin-pas-davis-checkbox" type="checkbox" value="piscine-pas-davis" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label htmlFor="piscine-pas-davis" className="ml-2 text-lg text-gray-900 dark:text-gray-300">je n'ai pas d'avis</label>
-                                    </div>
-                                    <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                    </button>
-                                </form>
-                            </div>
-                        </>
-                    )
-                }
-                {
-                    (formContent === "chauffage" || formContent.slice(0, 7) === 'piscine') && (
+                    (nextButton === 5) && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Type de bien:</h1>
                             <div className='hidden sm:block'>
@@ -508,7 +412,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    (formContent.slice(0, 8) === 'bedrooms' || formContent.slice(0, 8) === 'bathrooms') && (
+                    (nextButton === 6) && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb:7'>Budget:</h1>
                             <div className='hidden sm:block'>
@@ -593,7 +497,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    (formContent === 'budgetMin') && (
+                    (nextButton === 7) && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Budget:</h1>
                             <div className='hidden sm:block'>
@@ -630,7 +534,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    (formContent === 'coupDeFoudre') && (
+                    (nextButton === 8) && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Budget:</h1>
                             <div className='hidden sm:block'>
@@ -709,7 +613,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    formContent === 'travaux' && (
+                    nextButton === 9 && (
                         <>
                             <>
                                 <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
@@ -757,7 +661,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    formContent === 'quartier' && (
+                    nextButton === 10 && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                             <div className='hidden sm:block'>
@@ -801,7 +705,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    formContent === 'servicesDeProximite' && (
+                    nextButton === 11 && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                             <div className='hidden sm:block'>
@@ -849,7 +753,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    formContent === 'loisirsAproximite' && (
+                    nextButton === 12 && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Localisation/<br></br>environnement:</h1>
                             <div className='hidden sm:block'>
@@ -901,7 +805,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    formContent === 'ambiance' && (
+                    nextButton === 13 && (
                         <>
                             <h1 className='text-2xl underline font-bold lg:hidden mb-7'>Votre priorité:</h1>
                             <div className='hidden sm:block'>
@@ -937,7 +841,7 @@ const RealEstateForm = () => {
                     )
                 }
                 {
-                    formContent === 'nonNegociable' && (
+                    nextButton === 14 && (
                         <>
                             <div className='hidden sm:block'>
                                 <ul className="steps mb-12">
@@ -968,12 +872,19 @@ const RealEstateForm = () => {
                 }
             </div >
             {
-                formContent === 'email' && (
+                nextButton === 15 && (
                     <div className="flex flex-col items-center ">
                         <h1 className="sm:text-sm lg:text-2xl">Votre demande a bien été prise en compte, <br className='sm:display lg:hidden'></br>on revient vers vous très vite. &#128077;</h1>
                     </div>
                 )
             }
+            {
+                nextButton !== 0 && (
+                    <button type="submit" onClick={pastStep} className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                    </button>
+                )
+            }
+
         </>
 
     );
