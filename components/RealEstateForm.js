@@ -19,7 +19,10 @@ const RealEstateForm = () => {
     })
 
     useEffect(() => {
-        if (nextButton < 5) {
+        const budgetStepForHouse = (6 <= nextButton && nextButton < 9) && typeOfProperty === "maison"
+        const budgetStepForAppartment = (5 <= nextButton && nextButton < 9) && typeOfProperty === "appartement"
+
+        if (nextButton < 6) {
             setStep('Type de bien: ')
             setChronology({
                 typeOfProperty: "step step-primary",
@@ -27,7 +30,7 @@ const RealEstateForm = () => {
                 localisation: "step",
                 priority: "step",
             })
-        } else if (5 <= nextButton && nextButton < 9) {
+        } else if (6 <= nextButton && nextButton < 9) {
             setStep('Budget: ')
             setChronology({
                 typeOfProperty: "step step-primary",
@@ -65,10 +68,8 @@ const RealEstateForm = () => {
 
 
     const onFormSubmit = data => {
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        console.log('data', data)
-
         setNextButton(nextButton + 1);
 
         let formValueForPropertyType
@@ -86,8 +87,12 @@ const RealEstateForm = () => {
 
     const pastStep = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-
+        console.log('nextButton', nextButton)
         setNextButton(nextButton => nextButton - 1)
+        console.log('nextButton', nextButton)
+        if (nextButton === 0) {
+            setTypeOfProperty('')
+        }
 
         reset()
     }
@@ -761,8 +766,11 @@ const RealEstateForm = () => {
                             }
                             <div className='flex mt-3'>
                                 {
-                                    (nextButton !== 15 && nextButton !== 0) && (
-                                        <button type="submit" onClick={pastStep} className="py-2.5 px-3 mt-6 mb-2 mr-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Précédent
+                                    (nextButton < 14 && nextButton !== 0) && (
+                                        <button type="submit" value="past" onClick={(e) => {
+                                            e.preventDefault();
+                                            pastStep();
+                                        }} className="py-2.5 px-3 mt-6 mb-2 mr-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Précédent
                                         </button>
                                     )
                                 }
@@ -775,6 +783,7 @@ const RealEstateForm = () => {
                             </div>
                         </form>
                     </div>
+
                 </>
 
             </div >
