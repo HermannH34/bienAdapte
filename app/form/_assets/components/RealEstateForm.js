@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image'
-import './style.css';
+import Steps from './Steps';
+import test from 'node:test';
 
 const RealEstateForm = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, setError, clearErrors, formState: { errors }, reset } = useForm();
 
     const [typeOfProperty, setTypeOfProperty] = useState('');
     const [isMasked, setIsMasked] = useState(true);
     const [nextButton, setNextButton] = useState(0);
     const [step, setStep] = useState('Type de bien: ')
+
     const [chronology, setChronology] = useState({
         typeOfProperty: "step step-primary",
         budget: "step",
@@ -18,78 +20,26 @@ const RealEstateForm = () => {
         priority: "step",
     })
 
+    const [datasForDB, setDatasForDB] = useState({
+        test, testE: "a"
+
+    })
+
     useEffect(() => {
-        const budgetStepForHouse = (6 <= nextButton && nextButton < 9) && typeOfProperty === "maison"
-        const budgetStepForAppartment = (5 <= nextButton && nextButton < 9) && typeOfProperty === "appartement"
-
-        if (nextButton < 6) {
-            setStep('Type de bien: ')
-            setChronology({
-                typeOfProperty: "step step-primary",
-                budget: "step",
-                localisation: "step",
-                priority: "step",
-            })
-        } else if (6 <= nextButton && nextButton < 9) {
-            setStep('Budget: ')
-            setChronology({
-                typeOfProperty: "step step-primary",
-                budget: "step step-primary",
-                localisation: "step",
-                priority: "step",
-            })
-        } else if (9 <= nextButton && nextButton < 13) {
-            setStep('Localisation et environnement: ')
-            setChronology({
-                typeOfProperty: "step step-primary",
-                budget: "step step-primary",
-                localisation: "step step-primary",
-                priority: "step",
-            })
-        } else if (13 <= nextButton && nextButton < 14) {
-            setStep('Votre priorité: ')
-            setChronology({
-                typeOfProperty: "step step-primary",
-                budget: "step step-primary",
-                localisation: "step step-primary",
-                priority: "step step-primary",
-            })
-        } else {
-            setStep('')
-            setChronology({
-                typeOfProperty: "step step-primary",
-                budget: "step step-primary",
-                localisation: "step step-primary",
-                priority: "step step-primary",
-            })
-        }
-
+        updateStepAndChronology(nextButton, setStep, setChronology);
     }, [nextButton]);
 
 
-    const onFormSubmit = data => {
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setNextButton(nextButton + 1);
-
-        let formValueForPropertyType
-        if (nextButton === 0) {
-            formValueForPropertyType = data.propertyType[0]
-        }
-
-        if (formValueForPropertyType === "maison" || formValueForPropertyType === "appartement") {
-            setTypeOfProperty(formValueForPropertyType);
-        }
-
-
-        reset();
+    const handleFormSubmit = data => {
+        onFormSubmit(data, nextButton, setError, clearErrors, setTypeOfProperty, setNextButton, reset, datasForDB, setDatasForDB);
     };
+
 
     const pastStep = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        console.log('nextButton', nextButton)
+
         setNextButton(nextButton => nextButton - 1)
-        console.log('nextButton', nextButton)
+
         if (nextButton === 0) {
             setTypeOfProperty('')
         }
@@ -107,20 +57,9 @@ const RealEstateForm = () => {
             <div className="w-1/2 mx-auto"
             >
                 <>
-                    <div>
-                        <h1 className='text-2xl font-bold lg:hidden underline mb-7'>{step}</h1>
-                        <div className='hidden sm:block'>
-                            <ul className="steps mb-12">
-                                <li className={chronology.typeOfProperty}>Type de bien</li>
-                                <li className={chronology.budget}>Budget</li>
-                                <li className={chronology.localisation}>Localisation et environnement</li>
-                                <li className={chronology.priority}>Votre priorité</li>
-                            </ul>
-                        </div>
-                    </div>
-
+                    <Steps chronology={chronology} step={step} />
                     <div className='sm:ml-16'>
-                        <form onSubmit={handleSubmit(onFormSubmit)} className="mt-5">
+                        <form onSubmit={handleSubmit(handleFormSubmit)} className="mt-5">
                             {nextButton === 0 && (
                                 <>
                                     <Image
@@ -138,6 +77,7 @@ const RealEstateForm = () => {
                                         <input {...register("propertyType")} id="appartement-checkbox" type="checkbox" value="appartement" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                         <label htmlFor="appartement-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">un bel appartement</label>
                                     </div>
+                                    {errors.propertyType && <p className="text-red-500 text-sm mt-2">{errors.propertyType.message}</p>}
                                 </>
                             )}
                             {(nextButton === 1) && (
@@ -152,7 +92,7 @@ const RealEstateForm = () => {
                                     <div className='mb-2'>
                                         <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
                                         <input
-                                            {...register("surface")}
+                                            {...register("surface-min")}
                                             type="number"
                                             id="number-input"
                                             aria-describedby="helper-text-explanation"
@@ -164,7 +104,7 @@ const RealEstateForm = () => {
                                     <div>
                                         <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maximum:</label>
                                         <input
-                                            {...register("surface")}
+                                            {...register("surface-max")}
                                             type="number"
                                             id="number-input"
                                             aria-describedby="helper-text-explanation"
@@ -241,11 +181,11 @@ const RealEstateForm = () => {
                                             </div>
                                         </div>
                                         <div className="flex items-center mb-2 mt-4">
-                                            <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                            <input {...register("velo")} id="velo-checkbox" type="checkbox" value="oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                             <label htmlFor="velo" className="ml-2 text-base sm:text-lg text-gray-900 dark:text-gray-300">je préfererai avoir un local vélo dans <br></br> mon immeuble</label>
                                         </div>
                                         <div className="flex items-center mb-2 mt-4">
-                                            <input {...register("velo")} id="velo-checkbox" type="checkbox" value="velo" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                            <input {...register("velo")} id="velo-checkbox" type="checkbox" value="non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                             <label htmlFor="velo" className="ml-2 text-base sm:text-lg  text-gray-900 dark:text-gray-300">ce n'est pas important pour moi</label>
                                         </div>
                                     </div>
@@ -641,7 +581,7 @@ const RealEstateForm = () => {
                                                 <div className="label">
                                                     <span className="label-text">autres:</span>
                                                 </div>
-                                                <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
+                                                <textarea {...register("servicesDeProximite")} className="textarea textarea-bordered h-14" placeholder=""></textarea>
                                             </label>
                                         </div>
                                     </>
@@ -666,7 +606,7 @@ const RealEstateForm = () => {
                                             <label htmlFor="boutiques-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">boutiques ?</label>
                                         </div>
                                         <div className="flex items-center mb-2 mt-4">
-                                            <input {...register("loisirsAproximite")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                            <input {...register("loisirsAproximite-restaurantsBars")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                             <label htmlFor="restaurants/bars-checkbox" className="ml-2 text-lg text-gray-900 dark:text-gray-300">restaurants/bars ?</label>
                                         </div>
                                         <div className="flex items-center mb-2 mt-5">
@@ -674,7 +614,7 @@ const RealEstateForm = () => {
                                                 <div className="label">
                                                     <span className="label-text">autres:</span>
                                                 </div>
-                                                <textarea className="textarea textarea-bordered h-14" placeholder=""></textarea>
+                                                <textarea className="textarea textarea-bordered h-14" placeholder="" {...register("loisirsAproximite")}></textarea>
                                             </label>
                                         </div>
                                     </>
@@ -783,14 +723,93 @@ const RealEstateForm = () => {
                             </div>
                         </form>
                     </div>
-
                 </>
-
             </div >
-
         </>
-
     );
+};
+
+const onFormSubmit = (data, nextButton, setError, clearErrors, setTypeOfProperty, setNextButton, reset, datasForDB, setDatasForDB) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // console.log('data: ', Object.keys(data)[0])
+
+
+    const dataKey = Object.keys(data)
+    const dataValue = Object.values(data)
+
+    // console.log("dataValue", dataValue)
+
+    setDatasForDB(prevDatasForDB => ({
+        ...prevDatasForDB,
+        [dataKey]: dataValue
+    }));
+
+    console.log('datasForDB: ', datasForDB)
+
+
+    if (!data.propertyType && nextButton === 0) {
+        setError("propertyType", { type: "manual", message: "Vous devez sélectionner au moins une option" });
+        return;
+    }
+    clearErrors("typeOfProperty");
+
+    let formValueForPropertyType;
+    if (nextButton === 0) {
+        formValueForPropertyType = data.propertyType[0];
+    }
+
+    if (formValueForPropertyType === "maison" || formValueForPropertyType === "appartement") {
+        setTypeOfProperty(formValueForPropertyType);
+    }
+
+    setNextButton(nextButton => nextButton + 1);
+
+    reset();
+};
+
+const updateStepAndChronology = (stepIndex, setStep, setChronology) => {
+    if (stepIndex < 6) {
+        setStep('Type de bien: ');
+        setChronology({
+            typeOfProperty: "step step-primary",
+            budget: "step",
+            localisation: "step",
+            priority: "step",
+        });
+    } else if (stepIndex < 9) {
+        setStep('Budget: ');
+        setChronology({
+            typeOfProperty: "step step-primary",
+            budget: "step step-primary",
+            localisation: "step",
+            priority: "step",
+        });
+    } else if (stepIndex < 13) {
+        setStep('Localisation et environnement: ');
+        setChronology({
+            typeOfProperty: "step step-primary",
+            budget: "step step-primary",
+            localisation: "step step-primary",
+            priority: "step",
+        });
+    } else if (stepIndex < 14) {
+        setStep('Votre priorité: ');
+        setChronology({
+            typeOfProperty: "step step-primary",
+            budget: "step step-primary",
+            localisation: "step step-primary",
+            priority: "step step-primary",
+        });
+    } else {
+        setStep('');
+        setChronology({
+            typeOfProperty: "step step-primary",
+            budget: "step step-primary",
+            localisation: "step step-primary",
+            priority: "step step-primary",
+        });
+    }
 };
 
 export default RealEstateForm;
