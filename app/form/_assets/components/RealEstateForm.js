@@ -733,7 +733,7 @@ const handleSendDataToDB = async (datasForDB) => {
 const onFormSubmit = (data, nextButton, setError, clearErrors, setTypeOfProperty, setNextButton, reset, datasForDB, setDatasForDB) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    if (nextButton === 2) {
+    if (nextButton === 15) {
         return handleSendDataToDB(datasForDB);
     }
 
