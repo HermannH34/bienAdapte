@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image'
 import Steps from './Steps';
-import test from 'node:test';
+import insertForm from './actions.js';
 
 const RealEstateForm = () => {
     const { register, handleSubmit, setError, clearErrors, formState: { errors }, reset } = useForm();
@@ -20,10 +20,7 @@ const RealEstateForm = () => {
         priority: "step",
     })
 
-    const [datasForDB, setDatasForDB] = useState({
-        test, testE: "a"
-
-    })
+    const [datasForDB, setDatasForDB] = useState({})
 
     useEffect(() => {
         updateStepAndChronology(nextButton, setStep, setChronology);
@@ -729,16 +726,21 @@ const RealEstateForm = () => {
     );
 };
 
+const handleSendDataToDB = async (datasForDB) => {
+    insertForm(datasForDB);
+}
+
 const onFormSubmit = (data, nextButton, setError, clearErrors, setTypeOfProperty, setNextButton, reset, datasForDB, setDatasForDB) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // console.log('data: ', Object.keys(data)[0])
+    if (nextButton === 2) {
+        return handleSendDataToDB(datasForDB);
+    }
 
 
     const dataKey = Object.keys(data)
     const dataValue = Object.values(data)
 
-    // console.log("dataValue", dataValue)
 
     setDatasForDB(prevDatasForDB => ({
         ...prevDatasForDB,
@@ -747,8 +749,9 @@ const onFormSubmit = (data, nextButton, setError, clearErrors, setTypeOfProperty
 
     console.log('datasForDB: ', datasForDB)
 
+    const propertyTypeInput = data.propertyType
 
-    if (!data.propertyType && nextButton === 0) {
+    if (propertyTypeInput == null && nextButton === 0) {
         setError("propertyType", { type: "manual", message: "Vous devez sélectionner au moins une option" });
         return;
     }
