@@ -6,7 +6,6 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 const insertForm = async (formData) => {
- console.log('datasForDB: ', JSON.stringify(formData));
 
 
  try {
