@@ -29,7 +29,7 @@ const RealEstateForm = () => {
             setTimeout(() => {
                 formRef.current.submit();
                 handleSendDataToDB(datasForDB);
-            },)
+            }, 2000)
         }
 
     }, [nextButton]);
