@@ -1,8 +1,8 @@
 "use server"
 
 import { createClient } from '@supabase/supabase-js'
-const supabaseUrl = 'https://mzlpjgbtfjcjcfgazcrl.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16bHBqZ2J0ZmpjamNmZ2F6Y3JsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTAxMDQ5OTEsImV4cCI6MjAyNTY4MDk5MX0.8-aNol9WwWjBivPB1L6atQ25D7xHidWFh_phsUKSuLE'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 const insertForm = async (formData) => {

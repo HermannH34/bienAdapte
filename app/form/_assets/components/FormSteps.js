@@ -498,6 +498,11 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          <option value="hopitaux">Hôpitaux-Facultés</option>
          <option value="port-marianne">Port-Marianne</option>
          <option value="arenes">Prés d'Arènes</option>
+         <option value="castelnau">Castelnau-le-Lez</option>
+         <option value="vendargues">Vendargues</option>
+         <option value="grabels">Grabels</option>
+         <option value="saint-jean-de-vedas">Saint-Jean-de-Védas</option>
+         <option value="lattes">Lattes</option>
         </select>
        </div>
        <div className="flex items-center mb-2 mt-5">
