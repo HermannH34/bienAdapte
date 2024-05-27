@@ -1,4 +1,4 @@
-import RealEstateForm from "../../../components/RealEstateForm";
+import RealEstateForm from "../_assets/components/RealEstateForm";
 
 export default function realEstateForm() {
     return (

@@ -27,12 +27,12 @@ const About = () => {
                          </svg>{" "}
                          Retour
                     </Link>
-                    <h1 className="text-3xl font-extrabold pb-10">
+                    <h1 className="text-3xl font-extrabold pb-10 pl-6">
                          A propos de {config.appName}
                     </h1>
 
                     <pre
-                         className="leading-relaxed whitespace-pre-wrap"
+                         className="leading-relaxed whitespace-pre-wrap px-6"
                          style={{ fontFamily: "sans-serif" }}
                     >
                          {`Trouver le bien de ses rêves, ça prend toujours beaucoup de temps. La phase de recherche est clairement la plus longue en matière d’acquisition immobilière.

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import HeaderForm from "../_assets/components/HeaderForm";
 import FooterForm from "../_assets/components/FooterForm";
 
