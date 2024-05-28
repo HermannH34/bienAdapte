@@ -7,7 +7,7 @@ export default function realEstateForm() {
  return (
   <>
    <HeaderForm />
-   <main className="pt-24" style={{ marginBottom: '135px' }}>
+   <main className="pt-24" style={{ marginBottom: '150px' }}>
     <div className="flex flex-col items-center ">
      <h1 className="sm:text-xl lg:text-3xl mb-10 text-center ">Formulaire BienAdapté:  définissons ensemble le bien de vos rêves! 🚀</h1>
      <Link
@@ -21,8 +21,6 @@ export default function realEstateForm() {
    <div className="bg-base-200 h-20">
    </div>
    <div className="bg-base-200 h-20">
-   </div>
-   <div className="bg-base-200 h-10">
    </div>
   </>
  );
