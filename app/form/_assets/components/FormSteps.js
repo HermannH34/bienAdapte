@@ -1,22 +1,26 @@
 import React from 'react';
 import Image from 'next/image';
+import { Suspense } from 'react';
+import Loading from '@/app/_assets/components/Loading';
 
 const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, maskEvent }) => {
  return (
   <>
    {(nextButton === 0) && (
     <>
-     <Image
-      src="/cle.png"
-      width={75}
-      height={75}
-      alt="Picture of the author"
-      loading="lazy"
-      quality={70}
-      placeholder="blur"
-      priority
+     <Suspense fallback={Loading}>
+      <Image
+       src="/cle.png"
+       width={75}
+       height={75}
+       alt="Picture of the author"
+       loading="lazy"
+       quality={70}
+       placeholder="blur"
+       priority
 
-     />
+      />
+     </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
      <div className="flex items-center mt-6">
       <input {...register("propertyType")} id="maison-checkbox" type="checkbox" value="maison" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
@@ -32,16 +36,18 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    )}
    {(nextButton === 1) && (
     <>
-     <Image
-      src="/ruler.png"
-      width={75}
-      height={75}
-      alt="Picture of the author"
-      loading="lazy"
-      quality={70}
-      placeholder="blur"
-      priority
-     />
+     <Suspense fallback={Loading}>
+      <Image
+       src="/ruler.png"
+       width={75}
+       height={75}
+       alt="Picture of the author"
+       loading="lazy"
+       quality={70}
+       placeholder="blur"
+       priority
+      />
+     </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8 mb-6'>Surface minimum et maximum: </h1>
      <div className='mb-2' >
       <label htmlFor="number-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">minimum:</label>
@@ -72,16 +78,18 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    )}
    {(nextButton === 2 && typeOfProperty === "maison") && (
     <>
-     <Image
-      src="/feux-dartifice.png"
-      width={75}
-      height={75}
-      quality={70}
-      alt="Picture of the author"
-      loading="lazy"
-      placeholder="blur"
-      priority
-     />
+     <Suspense fallback={Loading}>
+      <Image
+       src="/feux-dartifice.png"
+       width={75}
+       height={75}
+       quality={70}
+       alt="Picture of the author"
+       loading="lazy"
+       placeholder="blur"
+       priority
+      />
+     </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>On parle d’une maison: </h1>
      <div className="flex items-center mb-2 mt-4">
       <input {...register("propertyAge")} id="age-checkbox" type="checkbox" value="moderne" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
