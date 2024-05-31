@@ -15,7 +15,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        height={75}
        alt="Picture of the author"
        quality={70}
-       priority
+      // priority
 
       />
      </Suspense>
@@ -41,7 +41,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        height={75}
        alt="Picture of the author"
        quality={70}
-       priority
+      // priority
       />
      </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8 mb-6'>Surface minimum et maximum: </h1>
@@ -81,7 +81,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        height={75}
        quality={70}
        alt="Picture of the author"
-       priority
+      // priority
       />
      </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>On parle d’une maison: </h1>
@@ -109,7 +109,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        height={75}
        quality={70}
        alt="Picture of the author"
-       priority
+      // priority
       />
      </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
@@ -140,7 +140,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          height={60}
          alt="Picture of the author"
          className='mr-4'
-         priority
+        // priority
         />
        </Suspense>
        <div>
@@ -164,7 +164,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
         height={60}
         alt="Picture of the author"
         className='mr-4'
-        priority
+       // priority
        />
        <div>
         <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-2'>La voiture:</h1>
@@ -192,7 +192,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        height={60}
        alt="Picture of the author"
        className='mr-4'
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>Le chauffage:</h1>
       <div className="flex items-center mb-2 mt-4">
@@ -218,7 +218,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={75}
        height={75}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>Le jardin: </h1>
       <div className="flex items-center mb-2 mt-4">
@@ -248,7 +248,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={75}
        height={75}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Et on va plus loin... une piscine ?</h1>
       <div className="flex items-center mt-6 mb-6">
@@ -277,7 +277,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          height={60}
          alt="Picture of the author"
          className='mr-4 mt-0'
-         priority
+        // priority
         />
         <div>
          <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
@@ -314,7 +314,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          height={60}
          alt="Picture of the author"
          className='mr-4 mt-0'
-         priority
+        // priority
         />
         <div>
          <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Combien de salle de bains?</h1>
@@ -357,7 +357,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          height={60}
          alt="Picture of the author"
          className='mr-4'
-         priority
+        // priority
         />
         <div>
          <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre budget: </h1>
@@ -392,7 +392,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          height={60}
          alt="Picture of the author"
          className='mr-4 mt-0'
-         priority
+        // priority
         />
         <div>
          <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>En cas de coup de coeur: </h1>
@@ -426,7 +426,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={70}
        height={70}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>Quels critères sont succeptibles de vous faire craquer?</h1>
       <textarea
@@ -450,7 +450,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          height={60}
          alt="Picture of the author"
          className='mr-4'
-         priority
+        // priority
         />
         <div>
          <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les travaux: </h1>
@@ -512,7 +512,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={75}
        height={75}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>C’est bon, on a défini votre bien idéal. <br></br>Mais il se situe où? </h1>
       <div className="flex w-12  mb-6 mt-6 flex-col" style={{ width: '25em' }}>
@@ -559,7 +559,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={75}
        height={75}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les services qui doivent être à proximité:</h1>
       <div className="flex items-center mb-6 mt-6">
@@ -589,7 +589,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={75}
        height={75}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les petits plus à coté:</h1>
       <div className="flex items-center mb-6 mt-6">
@@ -629,7 +629,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
           width={75}
           height={75}
           alt="parcs"
-          priority
+         // priority
          />
         </Suspense>
        </div>
@@ -642,7 +642,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
           width={75}
           height={75}
           alt="restaurants/bars"
-          priority
+         // priority
          />
         </Suspense>
        </div>
@@ -655,7 +655,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
           width={75}
           height={75}
           alt="calm"
-          priority
+         // priority
          />
         </Suspense>
        </div>
@@ -668,7 +668,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
           width={75}
           height={75}
           alt="restaurants/bars"
-          priority
+         // priority
          />
         </Suspense>
        </div>
@@ -685,7 +685,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        width={75}
        height={75}
        alt="Picture of the author"
-       priority
+      // priority
       />
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>Votre priorité: </h1>
       <textarea
