@@ -14,6 +14,8 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
       loading="lazy"
       quality={70}
       placeholder="blur"
+      priority
+
      />
      <h1 className='text-base sm:text-2xl font-semibold mt-8'>Quel type de bien recherchez-vous?</h1>
      <div className="flex items-center mt-6">
@@ -38,6 +40,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
       loading="lazy"
       quality={70}
       placeholder="blur"
+      priority
      />
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-8 mb-6'>Surface minimum et maximum: </h1>
      <div className='mb-2' >
@@ -77,6 +80,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
       alt="Picture of the author"
       loading="lazy"
       placeholder="blur"
+      priority
      />
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-6 mb-6'>On parle d’une maison: </h1>
      <div className="flex items-center mb-2 mt-4">
