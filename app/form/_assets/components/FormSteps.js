@@ -102,14 +102,16 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    )}
    {(nextButton === 2 && typeOfProperty === "appartement") && (
     <>
-     <Image
-      src="/feux-dartifice.png"
-      width={75}
-      height={75}
-      quality={70}
-      alt="Picture of the author"
-      loading="lazy"
-     />
+     <Suspense fallback={<Loading />}>
+      <Image
+       src="/feux-dartifice.png"
+       width={75}
+       height={75}
+       quality={70}
+       alt="Picture of the author"
+       loading="lazy"
+      />
+     </Suspense>
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
       Un appartement dans un bâtiment: </h1>
      <div className="flex items-center mb-2 mt-4">
@@ -131,14 +133,16 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
      <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4 mb-7'>Les moyens de locomotion:</h1>
      <div className='mb-12'>
       <div className="flex items-center">
-       <Image
-        src="/bicycle.png"
-        width={60}
-        height={60}
-        alt="Picture of the author"
-        className='mr-4'
-        loading="lazy"
-       />
+       <Suspense fallback={<Loading />}>
+        <Image
+         src="/bicycle.png"
+         width={60}
+         height={60}
+         alt="Picture of the author"
+         className='mr-4'
+         loading="lazy"
+        />
+       </Suspense>
        <div>
         <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'>Le vélo:</h1>
        </div>
