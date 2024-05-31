@@ -9,6 +9,7 @@ const nextConfig = {
       "logos-world.net",
       'www.flaticon.com',
     ],
+    minimumCacheTTL: 60,
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
