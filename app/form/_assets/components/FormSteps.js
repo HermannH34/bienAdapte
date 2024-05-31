@@ -1,22 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import { Suspense } from 'react';
-import Loading from '@/app/_assets/components/Loading';
+import Loading from './Loading';
 
 const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, maskEvent }) => {
  return (
   <>
    {(nextButton === 0) && (
     <>
-     <Suspense fallback={Loading}>
+     <Suspense fallback={<Loading />}>
       <Image
        src="/cle.png"
        width={75}
        height={75}
        alt="Picture of the author"
-       loading="lazy"
        quality={70}
-       placeholder="blur"
        priority
 
       />
@@ -36,15 +34,13 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    )}
    {(nextButton === 1) && (
     <>
-     <Suspense fallback={Loading}>
+     <Suspense fallback={<Loading />}>
       <Image
        src="/ruler.png"
        width={75}
        height={75}
        alt="Picture of the author"
-       loading="lazy"
        quality={70}
-       placeholder="blur"
        priority
       />
      </Suspense>
@@ -78,15 +74,13 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    )}
    {(nextButton === 2 && typeOfProperty === "maison") && (
     <>
-     <Suspense fallback={Loading}>
+     <Suspense fallback={<Loading />}>
       <Image
        src="/feux-dartifice.png"
        width={75}
        height={75}
        quality={70}
        alt="Picture of the author"
-       loading="lazy"
-       placeholder="blur"
        priority
       />
      </Suspense>
@@ -115,7 +109,6 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
       quality={70}
       alt="Picture of the author"
       loading="lazy"
-      placeholder="blur"
      />
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
       Un appartement dans un bâtiment: </h1>
