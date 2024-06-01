@@ -24,7 +24,7 @@ const HeaderForm = () => {
        width={55}
        height={55}
       />
-      <span className="font-extrabold text-lg">{config.appName}</span>
+      <span className="font-extrabold sm:text-lg text-sm">{config.appName}</span>
      </Link>
     </div>
    </div>
