@@ -22,7 +22,7 @@ const AsyncNextImage = ({ src, alt, width, height }) => {
     height={height}
     onLoadingComplete={() => {
 
-     setTimeout(() => setLoading(false), 0);
+     setTimeout(() => setLoading(false), 4);
     }}
     style={loading ? { visibility: 'hidden' } : { visibility: 'visible' }}
    />

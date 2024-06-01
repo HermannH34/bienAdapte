@@ -98,16 +98,14 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    )}
    {(nextButton === 2 && typeOfProperty === "appartement") && (
     <>
-     <Suspense fallback={<Loading />}>
-      <Image
-       src="/feux-dartifice.png"
-       width={75}
-       height={75}
-       quality={70}
-       alt="Picture of the author"
-       priority
-      />
-     </Suspense>
+     <AsyncNextImage
+      src="/feux-dartifice.png"
+      width={75}
+      height={75}
+      quality={70}
+      alt="Picture of the author"
+      priority
+     />
      <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>
       Un appartement dans un bâtiment: </h1>
      <div className="flex items-center mb-2 mt-4">
@@ -129,18 +127,16 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
      <h1 className='text-lg sm:text-3xl font-semibold font-sans mt-4 mb-7'>Les moyens de locomotion:</h1>
      <div className='mb-12'>
       <div className="flex items-center">
-       <Suspense fallback={<Loading />}>
-        <Image
-         src="/bicycle.png"
-         width={60}
-         height={60}
-         alt="Picture of the author"
-         className='mr-4'
-         priority
-        />
-       </Suspense>
+       <AsyncNextImage
+        src="/bicycle.png"
+        width={60}
+        height={60}
+        alt="Picture of the author"
+        className='mr-4'
+        priority
+       />
        <div>
-        <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-4'>Le vélo:</h1>
+        <h1 className='text-lg sm:text-2xl font-semibold font-sans ml-4 mt-4'>Le vélo:</h1>
        </div>
       </div>
       <div className="flex items-center mb-2 mt-4">
@@ -154,7 +150,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
      </div>
      <div>
       <div className="flex items-center">
-       <Image
+       <AsyncNextImage
         src="/car (2).png"
         width={60}
         height={60}
@@ -163,7 +159,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
         priority
        />
        <div>
-        <h1 className='text-lg sm:text-2xl font-semibold font-sans mt-2'>La voiture:</h1>
+        <h1 className='text-lg sm:text-2xl font-semibold font-sans ml-4 mt-2'>La voiture:</h1>
        </div>
       </div>
       <div>
@@ -182,7 +178,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    {
     (typeOfProperty === 'appartement' && nextButton === 4) && (
      <>
-      <Image
+      <AsyncNextImage
        src="/chauffe-eau.png"
        width={60}
        height={60}
@@ -266,7 +262,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
     (nextButton === 5) && (
      <>
       <div className='mb-12'>
-       <div className="flex items-center">
+       <div className="flex items-center mr-6">
         <AsyncNextImage
          src="/bed.png"
          width={60}
@@ -276,7 +272,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          priority
         />
         <div>
-         <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
+         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
         </div>
        </div>
        <div>
@@ -304,7 +300,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
       </div>
       <div>
        <div className="flex items-center">
-        <Image
+        <AsyncNextImage
          src="/bath.png"
          width={60}
          height={60}
@@ -313,7 +309,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          priority
         />
         <div>
-         <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Combien de salle de bains?</h1>
+         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>Combien de salle de bains?</h1>
         </div>
        </div>
        <div>
@@ -347,7 +343,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
      <>
       <div className='mb-12'>
        <div className="flex items-center">
-        <Image
+        <AsyncNextImage
          src="/money-bag.png"
          width={60}
          height={60}
@@ -356,7 +352,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          priority
         />
         <div>
-         <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Votre budget: </h1>
+         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>Votre budget: </h1>
         </div>
        </div>
        <div>
@@ -382,7 +378,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
         />
        </div>
        <div className="flex items-center pt-10">
-        <Image
+        <AsyncNextImage
          src="/coeur.png"
          width={60}
          height={60}
@@ -391,7 +387,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          priority
         />
         <div>
-         <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>En cas de coup de coeur: </h1>
+         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>En cas de coup de coeur: </h1>
         </div>
        </div>
        <div>
@@ -417,7 +413,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    {
     (nextButton === 7) && (
      <>
-      <Image
+      <AsyncNextImage
        src="/foudre.png"
        width={70}
        height={70}
@@ -440,7 +436,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
      <>
       <div className='mb-10'>
        <div className="flex items-center">
-        <Image
+        <AsyncNextImage
          src="/maintenance.png"
          width={60}
          height={60}
@@ -449,7 +445,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
          priority
         />
         <div>
-         <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Les travaux: </h1>
+         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>Les travaux: </h1>
         </div>
        </div>
        <div>
@@ -503,7 +499,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    {
     nextButton === 9 && (
      <>
-      <Image
+      <AsyncNextImage
        src="/accueil.png"
        width={75}
        height={75}
@@ -537,7 +533,6 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        <div className="flex items-center mb-2 mt-5">
         <label className="form-control">
          <div className="label">
-          {/* <span className="label-text">autres:</span> */}
          </div>
          <textarea {...register("quartier-autres")} className="textarea textarea-bordered h-14" placeholder="autres"></textarea>
         </label>
@@ -549,8 +544,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    {
     nextButton === 10 && (
      <>
-
-      <Image
+      <AsyncNextImage
        src="/feux-dartifice.png"
        width={75}
        height={75}
@@ -580,7 +574,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    {
     nextButton === 11 && (
      <>
-      <Image
+      <AsyncNextImage
        src="/feux-dartifice.png"
        width={75}
        height={75}
@@ -619,54 +613,46 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        <div className="flex flex-col items-center mb-2 mr-4 mt-4">
         <p className='mb-2'>nature</p>
         <input {...register("ambiance")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-        <Suspense fallback={<Loading />}>
-         <Image
-          src="/parc.png"
-          width={75}
-          height={75}
-          alt="parcs"
-          priority
-         />
-        </Suspense>
+        <AsyncNextImage
+         src="/parc.png"
+         width={75}
+         height={75}
+         alt="parcs"
+         priority
+        />
        </div>
        <div className="flex items-center mb-2 mt-4 ml-4 mr-4 flex-col">
         <p className='mb-2'>familiale</p>
         <input {...register("ambiance")} id="familiale" type="checkbox" value="familiale" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-        <Suspense fallback={<Loading />}>
-         <Image
-          src="/famille.png"
-          width={75}
-          height={75}
-          alt="restaurants/bars"
-          priority
-         />
-        </Suspense>
+        <AsyncNextImage
+         src="/famille.png"
+         width={75}
+         height={75}
+         alt="restaurants/bars"
+         priority
+        />
        </div>
        <div className="flex items-center mb-2 mt-4 ml-4 mr-4 flex-col">
         <p className='mb-2'>calme</p>
         <input {...register("ambiance")} id="calm" type="checkbox" value="calm" className="w-5 mb-2 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-        <Suspense fallback={<Loading />}>
-         <Image
-          src="/calme.png"
-          width={75}
-          height={75}
-          alt="calm"
-          priority
-         />
-        </Suspense>
+        <AsyncNextImage
+         src="/calme.png"
+         width={75}
+         height={75}
+         alt="calm"
+         priority
+        />
        </div>
        <div className="flex items-center mb-2 mt-4 ml-4 flex-col">
         <p className='mb-2'>festive</p>
         <input {...register("ambiance")} id="restaurants/bars" type="checkbox" value="restaurants/bars" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-        <Suspense fallback={<Loading />}>
-         <Image
-          src="/cocktail.png"
-          width={75}
-          height={75}
-          alt="restaurants/bars"
-          priority
-         />
-        </Suspense>
+        <AsyncNextImage
+         src="/cocktail.png"
+         width={75}
+         height={75}
+         alt="restaurants/bars"
+         priority
+        />
        </div>
 
       </div>
@@ -676,7 +662,7 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
    {
     nextButton === 13 && (
      <>
-      <Image
+      <AsyncNextImage
        src="/important.png"
        width={75}
        height={75}
