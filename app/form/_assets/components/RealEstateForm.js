@@ -3,13 +3,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import FormSteps from './FormSteps';
 import Steps from './Steps';
-import insertForm from './actions.js';
+import sendDataInDB from '../../libs/actions.js';
 
 const RealEstateForm = () => {
-    const { register, handleSubmit, setError, clearErrors, formState: { errors }, reset, watch } = useForm();
+    const { register, handleSubmit, setError, clearErrors, formState: { errors }, watch } = useForm();
 
     const [typeOfProperty, setTypeOfProperty] = useState('');
     const [nextButton, setNextButton] = useState(0);
+    const [finalStep, setFinalStep] = useState(false);
+
     const [step, setStep] = useState('Type de bien: ')
     const formRef = useRef(null);
 
@@ -20,23 +22,40 @@ const RealEstateForm = () => {
         priority: "step",
     })
 
-    const [datasForDB, setDatasForDB] = useState({})
 
     useEffect(() => {
         updateStepAndChronology(nextButton, setStep, setChronology);
-        if (nextButton === 15 && formRef.current) {
-            setTimeout(() => {
-                formRef.current.submit();
-                handleSendDataToDB(datasForDB);
-            }, 2000)
-        }
 
     }, [nextButton]);
 
 
-    const handleFormSubmit = data => {
-        onFormSubmit(data, nextButton, setError, clearErrors, setTypeOfProperty, setNextButton, reset, datasForDB, setDatasForDB);
+    const handleFormSubmit = async data => {
+        const dataInserted = await sendDataInDB(data)
+        setNextButton(nextButton => nextButton + 1)
+
+        setFinalStep(dataInserted)
     };
+
+    const nextStep = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const watchedValue = watch('propertyType')
+
+
+        if (!watchedValue && nextButton === 0) {
+            setError("propertyType", { type: "manual", message: "Vous devez sélectionner au moins une option" });
+            return;
+        }
+        clearErrors("typeOfProperty");
+
+        const houseStep = watchedValue && watchedValue[0] === "maison"
+        const apartmentStep = watchedValue && watchedValue[0] === "appartement"
+
+        if (houseStep || apartmentStep) {
+            setTypeOfProperty(watchedValue[0]);
+        }
+        setNextButton(nextButton => nextButton + 1)
+
+    }
 
     const pastStep = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -47,7 +66,6 @@ const RealEstateForm = () => {
             setTypeOfProperty('')
         }
 
-        reset()
     }
 
 
@@ -65,27 +83,33 @@ const RealEstateForm = () => {
                                     register={register}
                                     errors={errors}
                                     typeOfProperty={typeOfProperty}
+                                    finalStep={finalStep}
 
                                 />
                             </>
-                            <div className='flex mt-3'>
-                                {
-                                    (nextButton < 14 && nextButton !== 0) && (
-                                        <button type="submit" value="past" onClick={(e) => {
-                                            e.preventDefault();
-                                            pastStep();
-                                        }} className="py-2.5 px-3 mt-6 mb-2 mr-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Précédent
-                                        </button>
-                                    )
-                                }
-                                {
-                                    nextButton < 14 && (
-                                        <button type="submit" className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
-                                        </button>
-                                    )
-                                }
-                            </div>
+
                         </form>
+                        <div className='flex mt-3'>
+                            {
+                                (nextButton < 14 && nextButton !== 0) && (
+                                    <button onClick={(e) => {
+                                        e.preventDefault();
+                                        pastStep();
+                                    }} className="py-2.5 px-3 mt-6 mb-2 mr-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Précédent
+                                    </button>
+                                )
+                            }
+                            {
+                                nextButton < 14 && (
+                                    <button onClick={(e) => {
+                                        e.preventDefault();
+                                        nextStep();
+                                    }}
+                                        className="py-2.5 px-5 mt-6 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Suivant
+                                    </button>
+                                )
+                            }
+                        </div>
                     </div>
                 </>
             </div >
@@ -93,46 +117,6 @@ const RealEstateForm = () => {
     );
 };
 
-const handleSendDataToDB = async (datasForDB) => {
-    insertForm(datasForDB);
-}
-
-const onFormSubmit = async (data, nextButton, setError, clearErrors, setTypeOfProperty, setNextButton, reset, datasForDB, setDatasForDB) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-
-    const dataKey = Object.keys(data)
-    const dataValue = Object.values(data)
-
-
-    setDatasForDB(prevDatasForDB => ({
-        ...prevDatasForDB,
-        [dataKey]: dataValue
-    }));
-
-
-
-    const propertyTypeInput = data.propertyType
-
-    if (propertyTypeInput == null && nextButton === 0) {
-        setError("propertyType", { type: "manual", message: "Vous devez sélectionner au moins une option" });
-        return;
-    }
-    clearErrors("typeOfProperty");
-
-    let formValueForPropertyType;
-    if (nextButton === 0) {
-        formValueForPropertyType = data.propertyType[0];
-    }
-
-    if (formValueForPropertyType === "maison" || formValueForPropertyType === "appartement") {
-        setTypeOfProperty(formValueForPropertyType);
-    }
-
-    setNextButton(nextButton => nextButton + 1);
-
-    reset();
-};
 
 const updateStepAndChronology = (stepIndex, setStep, setChronology) => {
     if (stepIndex < 6) {

@@ -5,7 +5,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-const insertForm = async (formData) => {
+const sendDataInDB = async (formData) => {
 
 
  try {
@@ -16,17 +16,21 @@ const insertForm = async (formData) => {
     "data": JSON.stringify(formData),
    });
 
+  let dataInserted = false
   if (error) {
    console.error('Error inserting form data:', error.message);
    return null;
   }
 
   console.log('Form data inserted successfully:', data);
-  return data;
+  dataInserted = true
+
+  return dataInserted
+
  } catch (error) {
   console.error('Unexpected error:', error.message);
   return null;
  }
 
 }
-export default insertForm;
+export default sendDataInDB
