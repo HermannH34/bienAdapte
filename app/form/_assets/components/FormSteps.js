@@ -1,10 +1,10 @@
-import React from 'react';
-import Image from 'next/image';
-import { Suspense } from 'react';
 import AsyncNextImage from './AsyncNextImage';
-import Loading from './Loading';
+import React, { useState } from 'react';
 
-const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, maskEvent }) => {
+const FormSteps = ({ nextButton, register, errors, typeOfProperty }) => {
+
+ const [isMasked, setIsMasked] = useState(false);
+
  return (
   <>
    {(nextButton === 0) && (
@@ -262,17 +262,17 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
     (nextButton === 5) && (
      <>
       <div className='mb-12'>
-       <div className="flex items-center mr-6">
+       <div className="flex items-center">
         <AsyncNextImage
          src="/bed.png"
          width={60}
          height={60}
          alt="Picture of the author"
-         className='mr-4 mt-0'
+         className='mr-4 mt-2'
          priority
         />
         <div>
-         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>Combien de chambres est ce qu’il vous faut?</h1>
+         <h1 className='text-base sm:text-2xl font-semibold font-sans ml-4 mt-4'>Combien de chambres ?</h1>
         </div>
        </div>
        <div>
@@ -450,17 +450,17 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, isMasked, mas
        </div>
        <div>
         <div className="flex items-center mb-2 mt-8">
-         <input onClick={maskEvent} checked={!isMasked} {...register("travaux")} id="travaux-oui-checkbox" type="checkbox" value="travaux-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+         <input onClick={() => setIsMasked(true)} checked={isMasked} {...register("travaux")} id="travaux-oui-checkbox" type="checkbox" value="travaux-oui" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
          <label htmlFor="travaux-oui" className="ml-2 text-lg text-gray-900 dark:text-gray-300">envisageables</label>
         </div>
         <div className="flex items-center mb-2 mt-4">
-         <input onClick={maskEvent} {...register("travaux")} id="travaux-non-checkbox" type="checkbox" value="travaux-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+         <input onClick={() => setIsMasked(false)}  {...register("travaux")} id="travaux-non-checkbox" type="checkbox" value="travaux-non" className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
          <label htmlFor="travaux-non" className="ml-2 text-lg text-gray-900 dark:text-gray-300">non envisageables</label>
         </div>
        </div>
       </div>
       {
-       (!isMasked) && (
+       (isMasked) && (
         <>
          <div className='mb-10'>
           <h1 className='text-base mb-5 sm:text-2xl font-semibold font-sans mt-4'>L'ampleur des travaux: </h1>

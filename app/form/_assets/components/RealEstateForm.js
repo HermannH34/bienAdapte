@@ -9,7 +9,6 @@ const RealEstateForm = () => {
     const { register, handleSubmit, setError, clearErrors, formState: { errors }, reset, watch } = useForm();
 
     const [typeOfProperty, setTypeOfProperty] = useState('');
-    const [isMasked, setIsMasked] = useState(true);
     const [nextButton, setNextButton] = useState(0);
     const [step, setStep] = useState('Type de bien: ')
     const formRef = useRef(null);
@@ -51,10 +50,6 @@ const RealEstateForm = () => {
         reset()
     }
 
-    const maskEvent = () => {
-        setIsMasked(!isMasked);
-    }
-
 
     return (
         <>
@@ -70,8 +65,7 @@ const RealEstateForm = () => {
                                     register={register}
                                     errors={errors}
                                     typeOfProperty={typeOfProperty}
-                                    isMasked={isMasked}
-                                    maskEvent={maskEvent}
+
                                 />
                             </>
                             <div className='flex mt-3'>
