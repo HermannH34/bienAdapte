@@ -6,7 +6,7 @@ import Steps from './Steps';
 import insertForm from './actions.js';
 
 const RealEstateForm = () => {
-    const { register, handleSubmit, setError, clearErrors, formState: { errors }, reset, watch } = useForm();
+    const { register, handleSubmit, setError, clearErrors, formState: { errors }, reset } = useForm();
 
     const [typeOfProperty, setTypeOfProperty] = useState('');
     const [nextButton, setNextButton] = useState(0);
