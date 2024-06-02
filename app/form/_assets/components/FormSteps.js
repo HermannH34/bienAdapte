@@ -611,8 +611,8 @@ const FormSteps = ({ nextButton, register, errors, typeOfProperty, finalStep }) 
     nextButton === 12 && (
      <>
       <h1 className='text-base sm:text-2xl font-semibold font-sans mt-4'>Plus généralement, quelle ambiance vous parle le plus?</h1>
-      <div className='flex flex-wrap mb-6 mt-6'>
-       <div className="flex flex-col items-center mb-2 mr-4 mt-4">
+      <div className='flex flex-col sm:flex-row mb-6 mt-6'>
+       <div className="flex flex-col items-center mb-2 mr-4 mt-4 ml-4 sm:ml-0">
         <p className='mb-2'>nature</p>
         <input {...register("ambiance")} id="parcs" type="checkbox" value="parcs" className="w-5 h-5 mb-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
         <AsyncNextImage
