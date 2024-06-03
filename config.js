@@ -6,7 +6,7 @@ const config = {
   subscribeToApp: "Rentrez dans le réseau",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
   appDescription:
-    "L'appli qui prospecte à votre place.",
+    "",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "shipfa.st",
   crisp: {
