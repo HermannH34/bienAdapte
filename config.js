@@ -5,8 +5,7 @@ const config = {
   appName: "BienAdapté",
   subscribeToApp: "Rentrez dans le réseau",
   // REQUIRED: a short description of your app for SEO tags (can be overwritten)
-  appDescription:
-    "Trouvez le bien vos rêves !",
+  appDescription: "Trouvez le bien vos rêves !",
   // REQUIRED (no https://, not trialing slash at the end, just the naked domain)
   domainName: "bien-adapte.vercel.app",
   crisp: {
