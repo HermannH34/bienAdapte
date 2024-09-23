@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import FormSteps from './FormSteps';
 import Steps from './Steps';
 import sendDataInDB from '../../libs/actions.js';
+import updateStepAndChronology from './updateStepAndChronology';
 
 const RealEstateForm = () => {
     const { register, handleSubmit, setError, clearErrors, formState: { errors }, watch } = useForm();
@@ -22,10 +23,8 @@ const RealEstateForm = () => {
         priority: "step",
     })
 
-
     useEffect(() => {
         updateStepAndChronology(nextButton, setStep, setChronology);
-
     }, [nextButton]);
 
 
@@ -115,51 +114,6 @@ const RealEstateForm = () => {
             </div >
         </>
     );
-};
-
-
-const updateStepAndChronology = (stepIndex, setStep, setChronology) => {
-    if (stepIndex < 6) {
-        setStep('Type de bien: ');
-        setChronology({
-            typeOfProperty: "step step-primary",
-            budget: "step",
-            localisation: "step",
-            priority: "step",
-        });
-    } else if (stepIndex < 9) {
-        setStep('Budget: ');
-        setChronology({
-            typeOfProperty: "step step-primary",
-            budget: "step step-primary",
-            localisation: "step",
-            priority: "step",
-        });
-    } else if (stepIndex < 13) {
-        setStep('Localisation et environnement: ');
-        setChronology({
-            typeOfProperty: "step step-primary",
-            budget: "step step-primary",
-            localisation: "step step-primary",
-            priority: "step",
-        });
-    } else if (stepIndex < 14) {
-        setStep('Votre priorité: ');
-        setChronology({
-            typeOfProperty: "step step-primary",
-            budget: "step step-primary",
-            localisation: "step step-primary",
-            priority: "step step-primary",
-        });
-    } else {
-        setStep('');
-        setChronology({
-            typeOfProperty: "step step-primary",
-            budget: "step step-primary",
-            localisation: "step step-primary",
-            priority: "step step-primary",
-        });
-    }
 };
 
 
